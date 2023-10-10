@@ -1,4 +1,4 @@
-import {{cookiecutter.project_slug}}._{{ cookiecutter.component_type}} as ct #
+import {{cookiecutter.component_slug}}._{{ cookiecutter.component_type}} as ct #
 
 from dataclasses import dataclass
 

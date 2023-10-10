@@ -4,6 +4,9 @@ import zmq
 from zmq.asyncio import Context, Poller
 
 
+# Still need to fix message dataclass and send/recv msgs
+
+
 
 @dataclass
 class CBP_Socket:
