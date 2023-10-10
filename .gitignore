@@ -160,6 +160,7 @@ cython_debug/
 #.idea/
 
 # my-stuff
-private/
+private/*
 # !infrastructure/
 # end-my-stuff
+
