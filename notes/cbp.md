@@ -1,6 +1,24 @@
 # Component Based Programming CLI
 
-## Ranom thoughts atm
+* A component can be a task or type (verb or noun)
+* components are either atomic or composite
+* composites are networks of sub-components
+* task components
+  * a callable
+    * async
+    * process
+  * ui
+    * properties of output and task meta
+  * dockerfile
+
+
+---
+
+---
+
+
+
+## Random thoughts atm
 
 * Building and updating publicly
 * Proper OSS project on github
@@ -70,3 +88,9 @@ It..
 * higher level languages can be converted to faster implementations.
 * AI
 * Human curated when needed
+
+
+## What defines a component?
+
+* it is a host to a task (atomic component) or a network of tasks (composite component)
+*
