@@ -1,6 +1,6 @@
-from dataclasses import dataclass
 from typing import Any, Callable, Optional
 import zmq
+import uuid
 from zmq.asyncio import Context, Poller
 
 
@@ -8,25 +8,8 @@ from zmq.asyncio import Context, Poller
 
 
 
-@dataclass
-class CBP_Socket:
-    """
-    Hey this is CBP_Socket, how about that.
-    """
-    s_type:     zmq.SocketType
-    bind:       bool                # if False, then connect
-    address:    str
-    subscribe:  bytes
-    socket:     zmq.Socket
 
-@dataclass
-class CBP_Message:
-    msg_id:     int
-    datetime:   str
-    msg:        Any
-
-
-class {{cookiecutter.component_name}}:
+class Component:
     """
     """
     def __init__(self, input_sockets: list[CBP_Socket], output_sockets: list[CBP_Socket], task: Optional[Callable]) -> None:

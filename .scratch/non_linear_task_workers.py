@@ -73,28 +73,7 @@ class Controller:
             # code.
             self._process_results(worker_id, job, result)
 
-    def _handle_worker_message(self, worker_id, message):
-        """Handle a message from the worker identified by worker_id.
 
-        {'message': 'connect'}
-        {'message': 'disconnect'}
-        {'message': 'job_done', 'job_id': 'xxx', 'result': 'yyy'}
-        """
-        if message['message'] == 'connect':
-            assert worker_id not in self.workers
-            self.workers[worker_id] = {}
-        elif message['message'] == 'disconnect':
-            remaining_work = self.workers.pop(worker_id)
-            # Remove the worker so no more work gets added, and put any
-            # remaining work into _work_to_requeue
-            self._work_to_requeue.extend(remaining_work.values())
-        elif message['message'] == 'work_done':
-            result = message['result']
-            job = self.workers[worker_id].pop([message['job_id']])
-            # _process_results() is just a trivial logging function so I've
-            # omitted it from here, but you can find it in the final source
-            # code.
-            self._process_results(worker_id, job, result)
 
 class Worker:
     """Accept work in the form of {'number': xxx}, square the number and
