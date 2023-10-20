@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "pytaskserver"
+name = "cbp-gateway"
 version = "0.1.0"
-description = "Python async/process server for CBP"
-authors = ["Peter Alexander"]
-license = "MPLv2"
+description = ""
+authors = ["Your Name <you@example.com>"]
 readme = "README.md"
+packages = [{include = "cbp_gateway"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"

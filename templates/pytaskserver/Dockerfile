@@ -1,6 +1,8 @@
 
 # FROM python:3.9 as requirements-stage
-FROM python:3.12-slim-bookworm as requirements-stage
+# FROM python:3.12-slim-bookworm as requirements-stage
+FROM python:3.13.0a1-alpine3.18 as requirements-stage
+
 
 WORKDIR /tmp
 
@@ -10,7 +12,7 @@ COPY ./pyproject.toml ./poetry.lock* /tmp/
 
 RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
 
-FROM python:3.12-slim-bookworm
+FROM python:3.13.0a1-alpine3.18
 
 WORKDIR /code
 
