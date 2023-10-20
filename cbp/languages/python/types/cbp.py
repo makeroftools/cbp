@@ -1,19 +1,19 @@
 from __future__ import annotations
 import zmq
-from dataclasses import dataclass
+import strawberry as sb
 from typing import Any, Callable
 
-from ..generators import generate_id
+from cbp.utility.generators import generate_id
 
 
 
 
-@dataclass
+@sb.type
 class Profile:
     duration:   float
 
 
-@dataclass
+@sb.type
 class Task:
     """
     A Task is: 
@@ -27,7 +27,7 @@ class Task:
 
     
 
-@dataclass
+@sb.type
 class Socket:
     """
     Hey this is CBP_Socket, how about that.
@@ -39,7 +39,7 @@ class Socket:
     socket:     zmq.Socket
 
 
-@dataclass
+@sb.type
 class Message:
     msg_id:     int
     datetime:   str

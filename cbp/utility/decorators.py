@@ -1,6 +1,6 @@
 import time
 
-def profile_callable(func):
+def profile(func):
     def wrapper(*args, **kwargs):
         start_time = time.time()
         result = func(*args, **kwargs)
