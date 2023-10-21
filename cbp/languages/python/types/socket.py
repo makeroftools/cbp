@@ -1,17 +1,19 @@
 from __future__ import annotations
-from typing import Any 
+from typing import Any, Optional
+from sqlmodel import Field, SQLModel
 import strawberry as sb
 import zmq
 
 
 
 @sb.type
-class Socket:
+class Socket(SQLModel, table=True):
     """
     Hey this is CBP_Socket, how about that.
     """
-    s_type:     Any                  # zmq.SocketType
+    id:         Optional[int] = Field(default=None, primary_key=True)
+    s_type:     zmq.SocketType
     bind:       bool                # if False, then connect
     address:    str
     subscribe:  bytes
-    socket:     Any                    # zmq.Socket
+    socket:     zmq.Socket

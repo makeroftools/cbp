@@ -3,22 +3,26 @@ import strawberry
 from fastapi import FastAPI, Depends, Request, WebSocket, BackgroundTasks
 from strawberry.types import Info
 from strawberry.fastapi import BaseContext, GraphQLRouter
-
-
+from sqlmodel import create_engine
+import zmq
+import asyncio
+from zmq.asyncio import Context, Poller
 
 
 class Context(BaseContext):
-    def __init__(self, greeting: str, name: str):
+    def __init__(self):
         """
         Used for zmq componentry
         Used for sqlite DB interface
         """
-
+        self.db         = create_engine("sqlite:///gateway.db")
+        self.zmq_ctx    = Context.instance()
+        self.zmq_socket = self.zmq_ctx.socket(zmq.ROUTER)
 
 
 
 def custom_context_dependency() -> Context:
-    return Context(greeting="you rock!", name="John")
+    return Context()
 
 
 

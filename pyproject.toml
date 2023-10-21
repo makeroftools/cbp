@@ -14,8 +14,9 @@ python = "^3.11"
 typer = {extras = ["all"], version = "^0.9.0"}
 pyzmq = "^25.1.1"
 gevent = "^23.9.1"
-pydantic = "^2.4.2"
 strawberry-graphql = "^0.209.7"
+sqlmodel = {git = "https://github.com/tiangolo/sqlmodel.git"}
+python-graphql-client = "^0.4.3"
 
 
 [tool.poetry.group.dev.dependencies]
