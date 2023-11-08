@@ -42,11 +42,6 @@ def generate_cbpgateway(where: Path):
     """
 
 
-
-
-
-
-
 def generate_pyproject_file(
         project_name: str, 
         deps: list[str], 

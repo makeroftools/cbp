@@ -11,12 +11,9 @@
     * properties of output and task meta
   * dockerfile
 
-
 ---
 
 ---
-
-
 
 ## Random thoughts atm
 
@@ -89,8 +86,48 @@ It..
 * AI
 * Human curated when needed
 
-
 ## What defines a component?
 
-* it is a host to a task (atomic component) or a network of tasks (composite component)
-*
+* The component provides the necessary "pieces" that make up a component
+  * The task (is a description and meta to perform the execution)
+  * The task in turn is a list of "child" tasks.
+  * A Graphql Description
+    * The signature of the output
+    * The signature of the input
+    * The client code
+
+# Infrastructure and Component Distinction or not
+
+* Gateway
+* Language Task Server (Python ~ FastAPI)
+* How big (monolithic) can a component be?
+* What is a Component again? ..a Task?
+* 
+
+### Type
+
+* Component:
+  * Task:
+    * Input (graphql definition)
+    * Execution Block (code, can be empty and simply passed to children sequence)
+    * Output (graphql definition)
+    * Children Tasks
+    * Meta:
+      * Profile
+      * Description
+      * Name
+  * Host:
+    * Async Server, is the controlling entity for all execution methods.. the buck starts here
+    * Process, spawned by the async-server
+  * Communication: (zmq, graphql, http)
+    * Sockets are dynamically added as needed
+      * I need to develop a
+  * UI (a suplied web component used a default and is usually overridden )
+
+
+
+
+
+
+
+**/**# Model-based ML Towards Causal Reasoning in an AI Scientist by Yoshua Bengio (Turing Award Winner) - YouTube.md

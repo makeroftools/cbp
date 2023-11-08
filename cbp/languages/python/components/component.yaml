@@ -1,0 +1,13 @@
+---
+Component:
+  Task:
+    Name: ""
+    Description: ""
+    Language: ""  # python, rust, bash, go, javascript
+    Input: ""     # graphql schema definition
+    Output: ""    # graphql schema definition
+    Code: ""      # either a str of code, url or file path (need to improve this)
+    Profile:      # Information added during lifetime
+
+  Host:
+    Requirements: # cpu ram, etc

@@ -3,7 +3,8 @@ from typing import Any, Optional
 from sqlmodel import Field, SQLModel
 import strawberry as sb
 from cbp.languages.python.types.profile import Profile
-
+from cbp.languages.python.types.input import Input
+from cbp.languages.python.types.output import Output
 
 
 @sb.type
@@ -15,5 +16,5 @@ class Task(SQLModel, table=True):
     deploymnent: str
     source: str 
     profile: Profile
-    inputs: Any
-    outputs: Any
+    input: Input
+    output: Output
