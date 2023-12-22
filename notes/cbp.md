@@ -124,10 +124,13 @@ It..
       * I need to develop a
   * UI (a suplied web component used a default and is usually overridden )
 
-
-
-
-
-
-
 **/**# Model-based ML Towards Causal Reasoning in an AI Scientist by Yoshua Bengio (Turing Award Winner) - YouTube.md
+
+
+# Generation
+
+* Every Component Has:
+  * An event loop (function / routine) for communication with environment and performing (assigned) task.
+  * A task that is merely a "simple" function in the language
+  * a dockerfile if needed as an isolated process
+  *

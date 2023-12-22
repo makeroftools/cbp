@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "cbp"
+version = "0.1.0"
+description = "Component Based Programming"
+authors = ["Peter Alexander"]
+license = "MPLv2"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+typer = {extras = ["all"], version = "^0.9.0"}
+
+
+[tool.poetry.group.dev.dependencies]
+ipython = "^8.17.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

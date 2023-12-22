@@ -163,4 +163,4 @@ cython_debug/
 private/*
 # !infrastructure/
 # end-my-stuff
-
+*.old/

@@ -13,7 +13,6 @@
 * Input Variables
 * Output
 
-
 ## My Goals
 
 * Everything is dynamically generated
