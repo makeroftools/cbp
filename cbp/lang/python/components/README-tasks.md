@@ -27,3 +27,18 @@ They can be performed by mechanisms. What is a mechanism.
 **Tasks are recipes for "task-generators" needed for networked, system integration**
 
 In the orientation of graph theory, the task is the node and the i/o connection to other tasks is the edge (using e.g. zmq socket list).
+
+
+## What is it, formally?
+
+
+Is ANY programing language callable
+
+Is defined by a dataclass that acts as it's META data
+
+Is assigned / associated / wrapped by a component
+
+A component is a task's wrapper
+
+* It provides the network and message passing aspects to the callable task
+* Is the container to a subgraph or network of procedural tasks that fulfills it's mission

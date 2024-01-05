@@ -2,9 +2,9 @@ from __future__ import annotations
 from typing import Any, Optional
 from sqlmodel import Field, SQLModel
 import strawberry as sb
-from cbp.languages.python.types.profile import Profile
-from cbp.languages.python.types.input import Input
-from cbp.languages.python.types.output import Output
+from cbp_old.languages.python.types.profile import Profile
+from cbp_old.languages.python.types.input import Input
+from cbp_old.languages.python.types.output import Output
 
 
 @sb.type
