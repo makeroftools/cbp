@@ -1,4 +1,4 @@
-from cbp.lang.python.component import Component
+from cbp.lang.python.component_engine import Component
 
 ACK = "ok, task completed"
 

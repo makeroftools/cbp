@@ -124,10 +124,13 @@ It..
       * I need to develop a
   * UI (a suplied web component used a default and is usually overridden )
 
-
-
-
-
-
-
 **/**# Model-based ML Towards Causal Reasoning in an AI Scientist by Yoshua Bengio (Turing Award Winner) - YouTube.md
+
+# Random Notes
+
+* AUTOMATE ALL THINGS
+* I need to employ language parsers, NLP and AI
+* All "normal" objects need to be easily serialized to a common, multi-language format (json is probably besst here)
+* What's a sidecar you ask.. well it's simply a req/rep, that a component needs to accomplish it's task.
+  * Not sure about this concept yet.. I don't like it atm.
+*

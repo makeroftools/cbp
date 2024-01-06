@@ -19,12 +19,13 @@ class Task:
     
 
 
-class Component:
+class ComponentEngine:
     """
         This is it.. it is the miricle that provides.
         The magical all encompassing component.
         Its dynamic
     """
+
     poller:         Poller | None                   = None 
     ctx:            Context                         = Context.instance()
     engine_running: bool                            = False
@@ -32,7 +33,7 @@ class Component:
 
 
     @classmethod()
-    async def start_engine(cls):
+    async def run_engine(cls):
         """
         """
         if cls.running:
@@ -96,9 +97,6 @@ class Component:
             self.poller.register(socket=sock, flags=zmq.POLLIN)
         else:
             self.state.output_sockets.append(sock)
-
-
-
 
 
     def kill(self):
