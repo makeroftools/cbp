@@ -17,11 +17,13 @@ gevent = "^23.9.1"
 strawberry-graphql = "^0.209.7"
 sqlmodel = {git = "https://github.com/tiangolo/sqlmodel.git"}
 python-graphql-client = "^0.4.3"
+msgpack = "^1.0.7"
 
 
 [tool.poetry.group.dev.dependencies]
 ipython = "^8.16.1"
 jupyterlab = "^4.0.6"
+pytest = "^7.4.4"
 
 [build-system]
 requires = ["poetry-core"]
