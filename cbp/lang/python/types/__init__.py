@@ -1,8 +1,7 @@
-from .task import Task 
-from .message import Message
+from .message import Message, MessageList
 from .profile import Profile
-from .socket import Socket
-from .component import Component
+from .socket import Socket, SocketList
+from .component import Component, ComponentDict, ComponentList
 from .meta import Meta
 
 from typing import ForwardRef

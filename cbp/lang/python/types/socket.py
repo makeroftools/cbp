@@ -5,11 +5,11 @@ import strawberry as sb
 import zmq
 from cbp.lang.python.types import Meta
 
-CbpSocketList = list[ForwardRef('CbpSocket')]
+SocketList = list[ForwardRef('CbpSocket')]
 
 
 @sb.type
-class CbpSocket(SQLModel, table=True):
+class Socket(SQLModel, table=True):
     """
     Hey this is CBP Socket, how about that.
     """

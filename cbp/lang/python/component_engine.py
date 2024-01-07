@@ -1,35 +1,22 @@
 from typing import Any, Callable, Optional
 import zmq
-import uuid
 from zmq.asyncio import Context, Poller
 from zmq import REQ, REP, PUSH, PULL, PUB, SUB
 from typing import ForwardRef
 from cbp.lang.python.types.socket import CBPSocketList
 
 
-zmq.Socket.send_multipart()
-
 ZmqMultiMsg = list[bytes|zmq.Frame]
-
-
-class Task:
-    def __init__(self, callback: Callable):
-        self.task = callable
-
+ComponentList = list[ForwardRef('Component')]
     
-
-
 class ComponentEngine:
     """
-        This is it.. it is the miricle that provides.
-        The magical all encompassing component.
-        Its dynamic
     """
 
     poller:         Poller | None                   = None 
     ctx:            Context                         = Context.instance()
     engine_running: bool                            = False
-    components:     list[ForwardRef('Component')]   = []
+    components:     ComponentList                   = []
 
 
     @classmethod()
@@ -48,8 +35,7 @@ class ComponentEngine:
                         component.send(ret)
 
 
-
-    def __init__(self, manifest: dict[str,Any], task: Task):
+    def __init__(self):
         self.input_sockets: CBPSocketList
         self.output_sockets: CBPSocketList
         self.task = task
@@ -69,8 +55,6 @@ class ComponentEngine:
 
     async def on_recv(self, msg: ZmqMultiMsg) -> ZmqMultiMsg:
         """
-            NOTES: 
-                * Should this be async or NO? 
         """
         msg = msg[-1]                       # FIXME: wire protocol frames
         return await self.task(msg)        
