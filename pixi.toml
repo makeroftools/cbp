@@ -1,10 +1,30 @@
 [workspace]
 authors = ["Peter Alexander <makeroftools@creativedevelopment.systems>"]
-channels = ["https://conda.modular.com/max-nightly", "conda-forge"]
+channels = ["https://prefix.dev/pixi-build-backends", "https://conda.modular.com/max-nightly", "conda-forge"]
 name = "cbp"
 platforms = ["linux-64"]
 version = "0.1.0"
 
-[tasks]
-
 [dependencies]
+python = ">=3.14.0,<3.15"
+rust = ">=1.90.0,<1.91"
+mojo = ">=0.25.7.0.dev2025102105,<0.26"
+nodejs = ">=24.9.0,<24.10"
+
+[tasks]
+build-rust = "cargo build"
+hello = "echo Hello, World!"
+
+[feature.test.dependencies]
+pytest = "*"
+
+[feature.test.tasks]
+test = "pytest"
+
+[feature.dev.dependencies]
+jupyterlab = "*"
+
+[environments]
+test = { features = ["test"], solve-group = "prod" }
+production = { solve-group = "prod" }
+default = { features = ["dev", "test"], solve-group = "prod" }
