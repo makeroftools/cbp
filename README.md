@@ -41,18 +41,25 @@ An alternative to conventional programming.
 
 ### Components
 
+- Everything is a component
 - Modular packages
-    - `Task` Code (or link to where it is hosted)
-    - CLI interface code (plugin type)
+    - `CBP_Task` Code (or link to where it is hosted)
+    - CLI interface (typer) code (plugin type)
     - Web Component code
         - Perfect for CBP
             - each web-component is aligned with the business logic
                 - Input types
                 - Output types
-
+    - Use `rattler-build` to build and package components
     - Types are the contract (as is the graphql interface)
         - Inputs/Outputs.. thats it.
         - Pydantic/Graphql/etc 
             - All dynamically, automatically translated and generated/launched.
+- Dynamic hosting and execution environments
+    - Each component is in an async event system
+        - zmq::poll is used as the input/output controller for each
+    - Each is hosted in some (language) execution environment
+        - As part of an executing async event loop
+            - Offloads to process/thread pools when intense processing needed.
 
 
