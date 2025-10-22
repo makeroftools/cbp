@@ -8,6 +8,8 @@ An alternative to conventional programming.
 [New Architecture](#new-architecture)
 - [Python CLI Interface](#python-cli-interface)
 - [Components](#components)
+- [Component Templates](#component-templates)
+- [The Gateway](#the-gateway)
 <br>
 <br>
 <br>
@@ -26,7 +28,6 @@ An alternative to conventional programming.
         - Dynamic CBP language server/router launches and maintenance
         - Dynamic CBP `Task` routing via the language servers
         - Async, tokio event loop w/ zmq, etc.
-
 
 ### Python CLI Interface
 
