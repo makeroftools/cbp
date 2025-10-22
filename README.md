@@ -100,3 +100,14 @@ An alternative to conventional programming.
         - tokio
         - poem
         - msgpack
+
+### Testing
+#### Testing Setup for Multi-Language Async GraphQL Gateway
+
+**Layered Approach:**
+- **Unit Tests:** Isolate components in each language (e.g., Rust's `cargo test`, Python's pytest); mock messaging/GraphQL calls.
+- **Contract Tests:** Use Pact for GraphQL schemas (consumer: define queries/mutations; provider: verify responses) and async messages (consumer: expect payloads; provider: generate matching events). Supports Rust via pact-rs library.
+- **Integration Tests:** Virtualize services (e.g., Parasoft tools) to simulate language servers/messaging queues; test gateway routing.
+- **E2E Tests:** Run sparingly on full system; focus on critical paths.
+
+**Best Practice:** Consumer-driven contracts ensure cross-language compatibility without full deployments; automate in CI/CD.
