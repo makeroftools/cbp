@@ -67,6 +67,29 @@ An alternative to conventional programming.
 - `Copier` component project templates.
 - Provides all the project boilerplate items
 - Interactive dynamic configurations
+- Each component is generated from a component template.
+    - Language orientated.
+        - Language Server
+            - Async event loop at its core.
+            - Api server using graphql
+                - Awesome, hierarchical formalization and object retreival.
+            - Efficiency orientated.
+        - Languages
+            - Python
+            - Rust
+            - Mojo
+            - NodeJs
+            - Bash
+            - C
+            - C++
+                - std
+                - Qt
+            - Go
+            - etc.
+
+    - Copier project templates
+        - Pixi package manager
+
 
 ### The Gateway
 
