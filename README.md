@@ -60,6 +60,20 @@ An alternative to conventional programming.
         - zmq::poll is used as the input/output controller for each
     - Each is hosted in some (language) execution environment
         - As part of an executing async event loop
-            - Offloads to process/thread pools when intense processing needed.
+            - Offloads to process/thread pools when relatively intense processing is needed.
 
+### Component Templates
 
+- `Copier` component project templates.
+- Provides all the project boilerplate items
+- Interactive dynamic configurations
+
+### The Gateway
+
+- Rust Async api server using graphql
+    - Relays messages from the intertubes to the cbp "system of systems".
+    - Crates
+        - zmq
+        - tokio
+        - poem
+        - msgpack
