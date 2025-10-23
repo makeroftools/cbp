@@ -1,0 +1,66 @@
+[workspace]
+authors = ["Peter Alexander <makeroftools@creativedevelopment.systems>"]
+channels = ["https://conda.modular.com/max-nightly", "conda-forge"]
+name = "{{component_name}}"
+platforms = ["linux-64"]
+version = "{{component_version}}"
+description = "{{project_description}}"
+license = "{{license}}"
+license-file = "LICENSE"
+readme = "README.md"
+homepage = "{{component_homepage_url}}"
+repository = "{{component_repo_url}}"
+documentation = "{{documentation_url}}"
+requires-pixi = ">=1.0.1, <2"
+# conda-pypi-map (optional)#
+# conda-pypi-map (optional)#
+# channel-priority (optional)#
+
+
+
+[tasks]
+
+[dependencies]
+
+
+# [system-requirements]
+# #cuda = "11.0"
+
+# [build-system]
+# #build-backend = "hatchling.build"
+# #requires = ["hatchling"] (This is used instead of setuptools.)
+
+# [activation]
+# scripts = ["scripts/env_script.sh"]
+
+# [target.linux-64-activation.env]
+# ENV_VAR = "linux-value"
+
+# [feature.cuda]
+# dependencies = {cuda = "x.y.z", cudnn = "12.0"}
+# pypi-dependencies = {torch = "1.9.0"}
+# platforms = ["linux-64", "osx-arm64"]
+# activation = {scripts = ["cuda_activation.sh"]}
+# system-requirements = {cuda = "12"}
+# # Channels concatenate using a priority instead of overwrite, so the default channels are still used.
+# # Using the priority the concatenation is controlled, default is 0, the default channels are used last.
+# # Highest priority comes first.
+# channels = ["nvidia", {channel = "pytorch", priority = -1}] # Results in:  ["nvidia", "conda-forge", "pytorch"] when the default is `conda-forge`
+# tasks = { warmup = "python warmup.py" }
+# target.osx-arm64 = {dependencies = {mlx = "x.y.z"}}
+
+
+[feature.dev.dependencies]
+pytest ={  }
+
+[feature.test.tasks]
+test = "pytest"
+
+[feature.dev.tasks]
+
+
+[environments]
+test    = ["test"]
+dev     = ["dev"]
+prod    = ["prod"]
+
