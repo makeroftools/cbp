@@ -11,6 +11,7 @@ rust = ">=1.90.0,<1.91"
 mojo = ">=0.25.7.0.dev2025102105,<0.26"
 nodejs = ">=24.9.0,<24.10"
 typer = ">=0.20.0,<0.21"
+copier = ">=9.10.3,<10"
 
 [tasks]
 build-rust = "cargo build"
