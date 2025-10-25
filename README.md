@@ -24,10 +24,11 @@ An alternative to conventional programming.
     - All language servers are launched from here dynamically.
     - Gateway will merely be responsible for:
 
-        - Routing map ~ Graphql
-        - Dynamic CBP language server/router launches and maintenance
+        - Routing map ~ Graphql Federation Router
+        - Dynamic CBP language server/router launches and maintenance 
+            - via various loosely-coupled services
         - Dynamic CBP `Task` routing via the language servers
-        - Async, tokio event loop w/ zmq, etc.
+        - Async, tokio event loop w/ zmq, grpc, tcp, rest, db, etc.
 
 ### Python CLI Interface
 
@@ -59,6 +60,8 @@ An alternative to conventional programming.
 - Dynamic hosting and execution environments
     - Each component is in an async event system
         - zmq::poll is used as the input/output controller for each
+            - ..handles file sockets, zero-copy, etc.
+            - ..or better.. like maybe direct event-loop integration.. I think zmq does this..?
     - Each is hosted in some (language) execution environment
         - As part of an executing async event loop
             - Offloads to process/thread pools when relatively intense processing is needed.
@@ -90,17 +93,62 @@ An alternative to conventional programming.
 
     - Copier project templates
         - Pixi package manager
+        - rattler-build ??
+        - all source-repos go into the `src/` directory.
+        - all executable binaries go into `bin/` or `target` directories.
+        - all compiled and needed C/C++ libraries and headers go into `lib/` and `include/` directories.
+        - Dynamically generated orientated towards the component's runtime language.
+            - Copier `help/answers` formatted for this decision and immediate generation and build.
 
 
 ### The Gateway
 
 - Rust Async api server using graphql
     - Relays messages from the intertubes to the cbp "system of systems".
+    - Is a graphql "Apollo Federation" compliant server.
+    - async-graphql + poem == "Success"
     - Crates
         - zmq
         - tokio
         - poem
         - msgpack
+    - 
+
+### Language Servers
+
+- All are "Apollo Federation" compliant.
+
+- **Python** 
+    - FastAPI and Strawberry... mmm mm good!
+
+- **Typescript**
+    - Hive, etc.
+
+- **Rust**
+    - async-graphql and Poem.
+
+- **Go**
+    - ?
+
+- **C/C++**
+    - Probably via a rust service.
+
+
+
+### Graphical User Interface
+
+- Every component will utilize a web component (www standard).
+    - Web components are beautiful, just like cbp components ;-).
+- The "shell" or "dashboard" or "portal" will be the landing.
+    - It is the house of the "system of systems" that is cbp.
+
+
+### CLI interface
+
+- cbp will contain a client to the graphql gateway.
+- Each component will contain a snippet/plugin for the cli.
+
+
 
 ### Testing
 #### Testing Setup for Multi-Language Async GraphQL Gateway
