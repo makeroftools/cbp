@@ -103,16 +103,8 @@ An alternative to conventional programming.
 
 ### The Gateway
 
-- Rust Async api server using graphql
-    - Relays messages from the intertubes to the cbp "system of systems".
-    - Is a graphql "Apollo Federation" compliant server.
-    - async-graphql + poem == "Success"
-    - Crates
-        - zmq
-        - tokio
-        - poem
-        - msgpack
-    - 
+- Hive Router
+    - Only concern is the super-graph and its operation from the registered subgraphs
 
 ### Language Servers
 
@@ -122,7 +114,7 @@ An alternative to conventional programming.
     - FastAPI and Strawberry... mmm mm good!
 
 - **Typescript**
-    - Hive, etc.
+    - Yoga, etc.
 
 - **Rust**
     - async-graphql and Poem.
@@ -132,6 +124,10 @@ An alternative to conventional programming.
 
 - **C/C++**
     - Probably via a rust service.
+
+- **Bash**
+    - From the rust service.
+    - ..or from the python service.. convenient.
 
 
 
