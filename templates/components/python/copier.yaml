@@ -1,0 +1,37 @@
+
+_answers_file: copier-answers.yaml
+
+_jinja_extensions:
+  - copier_template_extensions.TemplateExtensionLoader
+  - extensions/context.py:ContextUpdater
+  - extensions/slugify.py:SlugifyExtension
+
+_tasks:
+  # Strings get executed as a shell command"
+  - "git init"
+  - 
+
+component_name:
+  type: str
+  help: What is the name of the component?
+
+component_creator:
+  type:str 
+  help: What is your name?
+
+creators_email:
+  type: str
+  help: What is your email?
+  
+# copyright_holder:
+#   type: str
+#   default: |-
+#         {% if project_license == 'Public domain' -%}
+#             {#- Nobody owns public projects -#}
+#             nobody
+#         {%- else -%}
+#             {#- By default, project creator is the owner -#}
+#             {{ project_creator }}
+#         {%- endif %}
+#     # Only ask for copyright if project is not in the public domain
+#     when: "{{ project_license != 'Public domain' }}"
