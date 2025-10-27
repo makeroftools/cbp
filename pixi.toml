@@ -5,7 +5,9 @@ platforms = ["linux-64"]
 preview = ["pixi-build"]
 
 [dependencies]
-cbp = { path = "." }
+# cbp = { path = "." }
+cbp-python = { path = "src/cbp-python"}
+cbp-rust = { path = "src/cbp-rust"}
 
 [tasks]
 hello = "echo Hello, World!"
@@ -13,15 +15,19 @@ hello = "echo Hello, World!"
 
 [package]
 name = "cbp"
-version = "0.0.1"
+version = "0.1.0"
 
 [package.build]
-backend = { name = "pixi-build-python", version = "*" }
+backend = { name = "pixi-build-python", version = "0.1.*" }
+
 
 [package.host-dependencies]
 hatchling = "*"
 
 [package.run-dependencies]
+cbp-python = { path = "src/cbp-python"}
+cbp-rust = { path = "src/cbp-rust"}
+
 python = ">=3.14.0,<3.15"
 typer = ">=0.20.0,<0.21"
 copier = ">=9.10.3,<10"

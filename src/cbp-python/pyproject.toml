@@ -1,0 +1,13 @@
+[project]
+name = "cbp-python"
+version = "0.1.0"
+# requires-python = ">=3.14.0,<3.15"
+dependencies = [
+    "typer>=0.20.0,<0.21",
+    "copier>=9.10.3,<10",
+    "mkdocs>=1.6.1,<2"
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
