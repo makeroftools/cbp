@@ -172,3 +172,4 @@ private/*
 # Added by cargo
 
 /target
+*.conda
