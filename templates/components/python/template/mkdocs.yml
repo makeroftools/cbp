@@ -1,0 +1,9 @@
+site_name: \{\{component_name\}\}
+name:
+  - Home: index.md
+  - About: about.md
+  - License: license.md
+theme: material
+markdown_extensions:
+  - toc
+    permalink: "#"
