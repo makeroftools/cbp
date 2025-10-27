@@ -1,0 +1,10 @@
+[package]
+name = "cbp-rust"
+version = "0.1.0"
+
+[package.build]
+backend = { name = "pixi-build-rust", version = "*", channels = ["https://prefix.dev/conda-forge"] }
+
+[package.build.config]
+# extra-args = ["--features", "serde"]
+env = { RUST_LOG = "debug" }
