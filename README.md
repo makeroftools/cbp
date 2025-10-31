@@ -97,7 +97,7 @@ An alternative to conventional programming.
         - all source-repos go into the `src/` directory.
         - all executable binaries go into `bin/` or `target` directories.
         - all compiled and needed C/C++ libraries and headers go into `lib/` and `include/` directories.
-        - Dynamically generated orientated towards the component's runtime language.
+        - Dynamically generated, orientated towards the component's runtime language.
             - Copier `help/answers` formatted for this decision and immediate generation and build.
 
 
