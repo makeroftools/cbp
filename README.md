@@ -184,13 +184,10 @@ An agreed upon communication protocol between agents
 
 
 tasks ARE types 
-    - They output a type
-    - So, the the depenent and the independent variables ARE types.. ergo, a task is a type with an outcome that is the type.
-    - so, 
 
 
 #### Phonemes and Meanings
-
+    ...
 
 #### Key Linguistic Theories:
 
