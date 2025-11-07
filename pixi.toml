@@ -4,10 +4,10 @@ channels = ["https://prefix.dev/pixi-build-backends", "https://conda.modular.com
 platforms = ["linux-64"]
 preview = ["pixi-build"]
 
-[dependencies]
-# cbp = { path = "." }
-cbp-python = { path = "src/cbp-python"}
-cbp-rust = { path = "src/cbp-rust"}
+# [dependencies]
+# # cbp = { path = "." }
+# cbp-python = { path = "src/cbp-python"}
+# cbp-rust = { path = "src/cbp-rust"}
 
 [tasks]
 hello = "echo Hello, World!"
@@ -24,9 +24,9 @@ backend = { name = "pixi-build-python", version = "0.1.*" }
 [package.host-dependencies]
 hatchling = "*"
 
-[package.run-dependencies]
-cbp-python = { path = "src/cbp-python"}
-cbp-rust = { path = "src/cbp-rust"}
+# [package.run-dependencies]
+# cbp-python = { path = "src/cbp-python"}
+# cbp-rust = { path = "src/cbp-rust"}
 
 python = ">=3.14.0,<3.15"
 typer = ">=0.20.0,<0.21"

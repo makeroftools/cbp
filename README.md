@@ -156,3 +156,220 @@ An alternative to conventional programming.
 - **E2E Tests:** Run sparingly on full system; focus on critical paths.
 
 **Best Practice:** Consumer-driven contracts ensure cross-language compatibility without full deployments; automate in CI/CD.
+
+
+## Thoughts 25.11.06
+    Everything gets generated (with cached/registered components available for quick access)
+
+### MetaSyntax Programming
+
+- Not even grammar standards are standard.. mfs
+- Build a lanugage hierarchy
+- And a grammar language hierarchy
+- Do this in a graphql schema consideration
+
+#### "Glue"
+
+Like python is to other programming languages, glue is the consideration (the portal) to metasyntax languages too.
+
+- I should also orientate towards "Context-Sensitive Flow-based programming"
+    - I should translate all bnfs to CBP metasytax (I don't have one..??)
+    - CBP metasyntax is a superset of all other metasyntax languages
+
+
+
+
+Language is a formalization
+An agreed upon communication protocol between agents
+
+
+tasks ARE types 
+    - They output a type
+    - So, the the depenent and the independent variables ARE types.. ergo, a task is a type with an outcome that is the type.
+    - so, 
+
+
+#### Phonemes and Meanings
+
+
+#### Key Linguistic Theories:
+
+- **Structuralism** (Saussure): 
+    Language as a system of signs; 
+    focuses on relationships between elements like phonemes and meanings.
+
+- **Generative Grammar** (Chomsky): 
+    Innate universal grammar; 
+    rules generate infinite sentences from finite structures.
+
+- **Functionalism**: 
+    Language shaped by communicative needs; 
+    emphasizes usage in social contexts.
+
+- **Cognitive Linguistics**: 
+    Language reflects human cognition; 
+    concepts like metaphor and embodiment central.
+
+- **Sociolinguistics**: 
+    Studies language variation by society, culture, and power dynamics.
+
+
+
+### Tree-sitter Notes
+
+- Basic Objects
+    - Language
+    - Syntax Tree
+
+
+### Language Hierarchy
+
+**Prompt:**
+    Given the term "Language", give me it's constituent parts/considerations. I need an expert's report. I would want to try to categorize all languages, natural, formal or otherwise.
+
+**Response**
+### Expert Report on "Language": Constituent Parts and Categorizations
+
+#### Constituent Parts/Considerations
+Languages comprise:
+- **Syntax**: Rules for structuring symbols/words into valid sequences.
+- **Semantics**: Meaning assignment to symbols/structures.
+- **Phonology/Morphology** (natural langs): Sound systems and word formation.
+- **Pragmatics**: Contextual use and interpretation.
+- **Lexicon**: Vocabulary set.
+- **Grammar**: Overall rule system.
+Key considerations: Expressivity, ambiguity, evolution (natural) vs. design (formal), universality vs. specificity.
+
+#### Categorization of All Languages
+1. **Natural Languages**: Evolved organically in human societies.
+   - Spoken: English, Mandarin (phonetic-based).
+   - Written: Extensions of spoken (alphabetic, logographic).
+   - Sign: ASL (visual-gestural).
+   - ~7,000 extant; families like Indo-European, Sino-Tibetan.
+
+2. **Constructed Languages (Conlangs)**: Human-designed.
+   - Auxiliary: Esperanto (international communication).
+   - Artistic/Fictional: Klingon (entertainment).
+   - Engineered: Lojban (logical precision).
+
+3. **Formal Languages**: Designed for precise, unambiguous computation/mathematics.
+   - Programming: Python, C++ (machine-executable).
+   - Logical/Mathematical: Predicate logic, set theory notations.
+   - Query: SQL (data manipulation).
+
+4. **Other**: 
+   - Animal communication: Bee dances, whale songs (proto-languages, limited syntax/semantics).
+   - Non-verbal: Body language, emojis (supplementary systems).
+
+
+Language  
+├── Components  
+│   ├── Syntax (structure rules)  
+│   ├── Semantics (meaning)  
+│   ├── Phonology/Morphology (sounds/words; natural only)  
+│   ├── Pragmatics (context)  
+│   ├── Lexicon (vocabulary)  
+│   └── Grammar (overall rules)  
+└── Categories  
+    ├── Natural (evolved; ~7k families)  
+    │   ├── Spoken (e.g., English)  
+    │   ├── Written (alphabetic/logographic)  
+    │   └── Sign (e.g., ASL)  
+    ├── Constructed (designed)  
+    │   ├── Auxiliary (e.g., Esperanto)  
+    │   ├── Artistic (e.g., Klingon)  
+    │   └── Engineered (e.g., Lojban)  
+    ├── Formal (precise/computational)  
+    │   ├── Programming (e.g., Python)  
+    │   ├── Logical (e.g., predicate logic)  
+    │   └── Query (e.g., SQL)  
+    └── Other  
+        ├── Animal (e.g., bee dances)  
+        └── Non-verbal (e.g., emojis)
+
+
+### Head Out of Ass.. moment.
+
+My Goal: 
+    Easy access to exchanges in a lower level language that can be glued with python
+
+The Problem: 
+    Everything available sucks!
+
+The Constraint:
+    - Functionality is available sparsely amongst open source projects and programming languages.
+    - Some programming languages and methodologies are not acceptable.
+
+The Ideal:
+    - What I'm trying to steer away from right now.
+    - A magic wand that produces what I want, when I want it.
+
+
+### CSG Resources
+
+[Stackoverflow: Is there a parsing algorithm for languages generated by context-sensitive grammars?](https://stackoverflow.com/questions/76810761/is-there-a-parsing-algorithm-for-languages-generated-by-context-sensitive-gramma)
+
+[https://en.wikipedia.org/wiki/Linear_bounded_automaton](https://en.wikipedia.org/wiki/Linear_bounded_automaton)
+
+[maandree/libparser](https://github.com/maandree/libparser)
+
+[w-wieczorek/ConsoleCSI](https://github.com/w-wieczorek/ConsoleCSI)
+
+[google/compynator](https://github.com/google/compynator)
+
+[GeeksForGeeks: Context-sensitive Grammar (CSG) and Language (CSL)](https://www.geeksforgeeks.org/theory-of-computation/context-sensitive-grammar-csg-and-language-csl/)
+
+[Tomassetti: Guide to Parsing Algorithms](https://tomassetti.me/guide-parsing-algorithms-terminology/)
+
+[Toolbox for Context-Sensitive Grammar Induction](https://proceedings.mlr.press/v153/wieczorek21a/wieczorek21a.pdf)
+
+[Algorithms for Scalable Natural Language Processing (TAG)](https://etd.ohiolink.edu/acprod/odb_etd/ws/send_file/send?accession=case1465469914&disposition=attachment)
+
+
+***Definition of Parsing***
+    - The analysis of an input, to organize the data, according to the rule of a grammar.
+    - To find the underlying structure of the data we are given.
+
+***Definition of a Grammar***
+    - A formal grammar is a set of rules that syntactically describes a language.
+    - In formal language theory, a grammar is a quadruple (V, Σ, R, S) where 
+        - V is variables, 
+        - Σ is terminals, 
+        - R is production rules, and 
+        - S is the start symbol.
+
+
+### Notes on Parsing, generally
+
+***Note: Raw representation is usually text, can be binary or other more exotics like sound, characteristics, other.***
+- Is the inverse of templating, some what.
+    - parsing: identifying structure to extract the data
+        - Detemine the model from the raw representation.
+        - Input: grammar (rules) and raw representation
+        - Output: Identification of structure, data model
+    - templating: Have structure, fill in with data.
+        - Combine the data w/ the model from the raw_representation
+        - Input: template (structure), data model
+        - Output: raw representation
+- Production Rules:
+    - Technically, it defines a transformation between the nonterminal, on the left, and the set of nonterminals and terminals, on the right.
+
+
+Build this lexer/parser/generator also in CBP format.. network of networks
+
+
+
+Input --> Lexical analysis --> Token sequence (+grammar definition) --> Parser --> Parse Tree or an AST (a form of IR) --> IR? --> 
+
+
+
+    Input
+        |
+        |
+        /\
+       /  \
+      /    \
+    Branch1 Branch2
+
+
+Parse the input.. stitch the tree.. If not validated.. alternate action (new tree if there is one)
