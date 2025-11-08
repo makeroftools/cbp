@@ -4,32 +4,19 @@ channels = ["https://prefix.dev/pixi-build-backends", "https://conda.modular.com
 platforms = ["linux-64"]
 preview = ["pixi-build"]
 
-# [dependencies]
-# # cbp = { path = "." }
-# cbp-python = { path = "src/cbp-python"}
-# cbp-rust = { path = "src/cbp-rust"}
-
-[tasks]
-hello = "echo Hello, World!"
-
-
-[package]
-name = "cbp"
-version = "0.1.0"
-
-[package.build]
-backend = { name = "pixi-build-python", version = "0.1.*" }
-
-
-[package.host-dependencies]
-hatchling = "*"
-
-# [package.run-dependencies]
-# cbp-python = { path = "src/cbp-python"}
-# cbp-rust = { path = "src/cbp-rust"}
-
+[dependencies]
 python = ">=3.14.0,<3.15"
 typer = ">=0.20.0,<0.21"
 copier = ">=9.10.3,<10"
 mkdocs = ">=1.6.1,<2"
+
+[pypi-dependencies]
+tree-sitter = ">=0.25.2, <0.26"
+tree-sitter-python = ">=0.25.0, <0.26" 
+
+[tasks]
+tree-sitter = "python src/cbp/tree_sitter/app.py" 
+
+
+
 

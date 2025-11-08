@@ -370,3 +370,104 @@ Input --> Lexical analysis --> Token sequence (+grammar definition) --> Parser -
 
 
 Parse the input.. stitch the tree.. If not validated.. alternate action (new tree if there is one)
+
+
+## Thoughts 25.11.07
+
+- Tree-sitter is the focus.
+- Investigating using CSG and graph grammars.
+    - CSG encapsulates
+    - CSG, Graph Grammars and Visual Programming go hand-in-hand.
+
+## CSG
+
+### Equivalence to LBA (Linear Bounded Automaton)
+
+- A formal language can be described by a context-sensitive grammar if and only if it is accepted by some linear bounded    
+  automaton (LBA).
+    - Myhill introduced the concept of deterministic LBA in 1960
+    - Peter S. Landweber published in 1963 that the language accepted by a deterministic LBA is context sensitive.
+    - Kuroda introduced the notion of non-deterministic LBA and the equivalence between LBA and CSGs in 1964
+
+- As of 2010[needs update] it is still an open question whether every context-sensitive language can be accepted by a 
+  deterministic LBA
+
+
+## 25.11.08
+
+### Hyperedge Replacement Grammars
+
+[Chapter 2](https://www.cs.rochester.edu/u/gildea/2018_Fall/hrg.pdf)
+
+
+    Label edges with arbitrary symbols. 
+    
+    Then we can build productions whose left-hand sides are labels and whose right-hand
+    sides are graphs. 
+    
+    A production S ::= G′ is applied to a graph G by choosing an
+    edge e labelled with S and replacing it with G′, which yields a direct derivation
+    G =⇒ G[e/G′]. 
+    
+    The productions shown in Figure 2.2, for instance, generate
+    the set of series-parallel graphs (which describe a simple type of concurrent
+    processes) if we start with a single, S-labelled edge and apply productions
+    until no S-labelled edge is left. 
+    
+    A sample derivation beginning with a slightly
+    larger graph is shown in Figure 2.3. Here, =⇒∗ denotes the transitive and
+    reflexive closure of =⇒, as usual.
+
+### Graph Rewriting
+    https://en.wikipedia.org/wiki/Graph_rewriting
+
+Open source implementations:
+
+- graphgram: GitHub library (ihh/graphgram) for transforming graphlib graphs via JSON-described grammars.
+
+- GGL: C++ library (BackofenLab/GGL) for implementing and applying graph rewrite systems.
+
+- booggie: Not detailed in searches; possibly a variant or tool for graph transformations.
+
+More expressive grammars:
+
+- Context-sensitive graph grammars: Allow neighboring subgraph contexts in productions; used for complex languages, with parsing algorithms and machine learning applications.
+
+- Reserved graph grammar (RGG): Context-sensitive formalism with constraints for visual languages and GUIs; solves embedding issues.
+
+- Contextual graph grammars: Deterministic variants characterizing rational graphs; apply to context-sensitive languages.
+
+More Expressive ~ Resources
+
+- GGL (Graph Grammar Library, supports context-sensitive): https://github.com/BackofenLab/GGL
+
+- graphgram: https://github.com/ihh/graphgram
+    - using a configurable, JSON-described graph grammar (see e.g. these slides by Matilde Marcolli, or this RPS article about Joris Dormans' Unexplored (which uses the technique to generate "cyclic" levels), or this Wikipedia page).
+
+- GraphGen: https://github.com/drobertadams/GraphGen
+
+- GraphSynth: https://designengrlab.github.io/GraphSynth/
+
+- Data-Efficient Graph Grammar Learning: https://github.com/gmh14/data_efficient_grammar
+
+- GrammarGraph (context-free to graphs): https://github.com/rindPHI/GrammarGraph
+
+Graph Implementations
+
+-- YapyGraph ~ Yet Another Python Graph Implementation: https://github.com/drobertadams/YapyGraph
+
+#### Kappa Language/Tools
+In
+chemistry, the concept of a rule emphasizes the distinction between the transformation of a structure
+fragment and the reaction instance that results when that fragment is transformed within the context of
+specific entities that contain it. In this sense, a rule represents the mechanism of an interaction. That is
+precisely the intended meaning of a rule in Kappa.
+
+
+
+Decided to go with GGL for now.. let's see if it builds.
+
+..in the mean time, going back to utilizing tree-sitter.
+
+## Tree-sitter Work ..for the rest of the day.
+
