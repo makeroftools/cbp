@@ -1,0 +1,3 @@
+# Service
+
+::: accounting.service

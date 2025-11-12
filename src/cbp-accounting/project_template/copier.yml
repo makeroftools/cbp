@@ -1,0 +1,31 @@
+subdir: "{{ project_slug }}"
+
+_min_copier_version: 8.0.0
+
+_templates_suffix: .jinja
+
+[questions]
+project_name:
+  type: str
+  help: Project name?
+  default: Accounting Project
+
+project_slug:
+  type: str
+  help: Project slug (lowercase, hyphenated)?
+  default: "{{ project_name.lower().replace(' ', '-') }}"
+
+author_name:
+  type: str
+  help: Author name?
+  default: Peter Alexander
+
+author_email:
+  type: str
+  help: Author email?
+  default: makeroftools@creativedevelopment.systems
+
+python_version:
+  type: str
+  help: Python version constraint?
+  default: ">=3.14.0,<3.15"

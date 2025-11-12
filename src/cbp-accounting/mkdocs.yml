@@ -1,0 +1,79 @@
+site_name: Accounting Project
+site_url: https://example.com
+site_description: Python accounting system documentation
+site_author: Peter Alexander
+
+theme:
+  name: material
+  features:
+    - content.code.annotate
+    - navigation.indexes
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  icon:
+    logo: material/calculator
+    favicon: material/calculator
+
+nav:
+  - Home: index.md
+  - Usage: usage.md
+  - API:
+    - Models: models.md
+    - Config: config.md
+    - Service: service.md
+    - Persistence: persistence.md
+  - Testing: testing.md
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_source: true
+            show_signature: true
+            show_signature_annotations: true
+            separate_signature: true
+            line_length: 80
+            members_order: source
+            show_root_heading: true
+            show_if_no_docstring: true
+            docstring_style: google
+            merge_init_into_class: true
+            show_bases: true
+            show_submodules: true
+  - section-index
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+
+repo_url: https://github.com/example/accounting
+edit_uri: edit/main/docs/

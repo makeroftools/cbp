@@ -16,7 +16,7 @@ HOST_SAMSUNG = "10.1.10.239"
 Commands = {
     "host_devices": "ip route show",
     "id_net_devices_and_services": "sudo nmap -O -sV 10.1.10.0/24",
-
+    "whats_my_ip": "curl -4 ifconfig.me"
 }
 
 example_id_net_devices_and_services = """
