@@ -33,6 +33,6 @@ preview = ["pixi-build"]
 # version = "0.1.0"
 # description = "Workspace"
 
-[run-dependencies]
+[dependencies]
 cbp-accounting = { path = "./cbp-accounting" }
 cbp = { path = "./cbp" }
