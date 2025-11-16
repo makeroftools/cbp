@@ -472,7 +472,7 @@ Decided to go with GGL for now.. let's see if it builds.
 
 ..in the mean time, going back to utilizing tree-sitter.
 
-### Tree-sitter Work ..for the rest of the day.
+**Tree-sitter work ..for the rest of the day.**
 ---
 
 ## 25.11.13

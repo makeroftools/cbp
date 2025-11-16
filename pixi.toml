@@ -7,32 +7,16 @@
 # Yes; root resolves dependencies across all, executes tasks/builds (via pixi run/pixi-build), and ensures shared environments. Sub-packages focus on specifics.
 
 [workspace]
+name = "cbp"
 authors = ["Peter Alexander <makeroftools@creativedevelopment.systems>"]
 channels = ["https://prefix.dev/pixi-build-backends", "https://conda.modular.com/max-nightly", "conda-forge"]
 platforms = ["linux-64"]
-preview = ["pixi-build"]
+version = "0.1.0"
 
-# [dependencies]
-# python = ">=3.14.0,<3.15"
-# typer = ">=0.20.0,<0.21"
-# copier = ">=9.10.3,<10"
-# mkdocs = ">=1.6.1,<2"
-
-# [pypi-dependencies]
-# tree-sitter = ">=0.25.2, <0.26"
-# tree-sitter-python = ">=0.25.0, <0.26" 
-
-# [tasks]
-# tree-sitter = "python src/cbp/tree_sitter/app.py" 
-
-
-
-
-# [project]
-# name = "my-workspace"
-# version = "0.1.0"
-# description = "Workspace"
+[tasks]
 
 [dependencies]
-cbp-accounting = { path = "./cbp-accounting" }
-cbp = { path = "./cbp" }
+python = ">=3.14.0,<3.15"
+
+[pypi-dependencies] 
+cbp = { editable = true }
