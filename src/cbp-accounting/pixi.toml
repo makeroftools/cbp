@@ -6,12 +6,15 @@
 # platforms = ["linux-64"]
 # version = "0.1.0"
 
-[project]
+[package]
 name = "cbp-accounting"
 version = "0.1.0"
 description = "CBP Accounting"
+# channels = ["https://prefix.dev/pixi-build-backends", "https://conda.modular.com/max-nightly", "conda-forge"]
+# preview = ["pixi-build"]
+build =  {backend = { name = "pixi-build"} }
 
-[tasks]
+
 app = "PYTHONPATH=src python src/accounting/app.py"
 tests = "PYTHONPATH=src pytest tests/ -v"
 docs-build = "PYTHONPATH=src mkdocs build -f mkdocs.yml"

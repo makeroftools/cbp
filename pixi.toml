@@ -10,29 +10,21 @@
 authors = ["Peter Alexander <makeroftools@creativedevelopment.systems>"]
 channels = ["https://prefix.dev/pixi-build-backends", "https://conda.modular.com/max-nightly", "conda-forge"]
 platforms = ["linux-64"]
+name = "cbp"
 preview = ["pixi-build"]
 
-# [dependencies]
-# python = ">=3.14.0,<3.15"
-# typer = ">=0.20.0,<0.21"
-# copier = ">=9.10.3,<10"
-# mkdocs = ">=1.6.1,<2"
+[dependencies]
+python = ">=3.14.0,<3.15"
+typer = ">=0.20.0,<0.21"
+copier = ">=9.10.3,<10"
+mkdocs = ">=1.6.1,<2"
+cbp-accounting = { path = "./src/cbp-accounting" }
 
-# [pypi-dependencies]
-# tree-sitter = ">=0.25.2, <0.26"
-# tree-sitter-python = ">=0.25.0, <0.26" 
+[pypi-dependencies]
+tree-sitter = ">=0.25.2, <0.26"
+tree-sitter-python = ">=0.25.0, <0.26"
 
-# [tasks]
-# tree-sitter = "python src/cbp/tree_sitter/app.py" 
+[tasks]
+tree-sitter = "python src/cbp/tree_sitter/app.py"
 
-
-
-
-# [project]
-# name = "my-workspace"
-# version = "0.1.0"
-# description = "Workspace"
-
-[run-dependencies]
-cbp-accounting = { path = "./cbp-accounting" }
-cbp = { path = "./cbp" }
+[editable]
