@@ -21,8 +21,6 @@ backend = { name = "pixi-build", version = "*"}
 [dependencies]
 typer = ">=0.20.0,<0.21"
 
-
-
 [package.host-dependencies]
 # host-dependencies#
 # Host dependencies are required during build phase, but in contrast to build packages they have to be present on the host.

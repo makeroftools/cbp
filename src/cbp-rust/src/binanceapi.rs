@@ -1,30 +1,29 @@
 use binance_sdk::spot::{
     rest_api::TickerParams,
+    SpotRestApi,
 };
-
+use binance_sdk::
 use async_graphql::{
     Context,
     Object
 };
 
+pub struct Ticker;
+pub struct Params;
 
-pub struct QueryRoot;
+#[derive(Default)]
+pub struct BinanceQuery;
 
 #[Object]
-impl QueryRoot {
-    async fn ping(
+impl BinanceQuery {
+    async fn time(
         &self, 
-        ctx: &Context,
-        #[graphql(desc = "This arg is optional.")]
-        arg: Option<Arg>,
-    ) -> Ticker {
+        ctx: &Context<'_>
+    ) -> async_graphql::Result<String> {
+        let client = ctx.data::<SpotRestApi>()?;
         let params = TickerParams::default();
-        let response = rest_client
-            .ticker(params)
-            .await
-            .context("ticker request failed");
-        let data = response.data().await?;
-        return data
+        let response = client.time().await.context("time request failed");
+        Ok(response)
     }
 }
 

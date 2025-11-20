@@ -1,4 +1,4 @@
- [workspace]
+[workspace]
 name = "cbp-rust"
 version = "0.1.0"
 description = "Add a short description here"
