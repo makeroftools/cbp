@@ -1,0 +1,58 @@
+[workspace]
+name = "cbp"
+version = "0.1.0"
+authors = ["Peter Alexander <makeroftools@creativedevelopment.systems>"]
+channels = ["https://conda.modular.com/max-nightly", "conda-forge"]
+platforms = ["linux-64"]
+preview = ["pixi-build"]
+
+[package]
+name = "cbp"
+version = "0.1.0"
+authors = ["Peter Alexander <makeroftools@creativedevelopment.systems>"]
+description = "A package for building and managing projects"
+license = "MPL-2.0"
+readme = "README.md"
+repository = "https://github.com/makeroftools/cbp"
+
+[package.build]
+backend = { name = "pixi-build", version = "*"}
+
+[dependencies]
+typer = ">=0.20.0,<0.21"
+
+
+
+[package.host-dependencies]
+# host-dependencies#
+# Host dependencies are required during build phase, but in contrast to build packages they have to be present on the host.
+# Following packages are typical examples for host dependencies:
+# shared libraries (c/c++)
+# python/r libraries that link against c libraries
+# python, r-base
+# setuptools, pip
+python = ">=3.14.0,<3.15"
+
+[package.build-dependencies]
+# Build dependencies are required in the build environment and contain all tools that are not needed on the host of the package.
+# Following packages are examples of typical build dependencies:
+# compilers (gcc, clang, gfortran)
+# build tools (cmake, ninja, meson)
+# make
+# pkg-config
+# VSC packages (git, svn)
+
+[package.run-dependencies]
+# run-dependencies#
+# The run-dependencies are the packages that will be installed in the environment when the package is run.
+# Libraries
+# Extra data file packages
+# Python/R packages that are not needed during build time
+cbp-rust = { path = "src/cbp-rust" }
+cbp-accounting = { path = "src/cbp-accounting" }
+rich = ">=14.2.0,<15"
+
+[tasks]
+start = "PYTHONPATH=./src python src/cbp/app.py"
+
+
