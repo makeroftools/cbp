@@ -396,6 +396,7 @@ Parse the input.. stitch the tree.. If not validated.. alternate action (new tre
 ## 25.11.08
 
 ### Hyperedge Replacement Grammars
+---
 
 [Chapter 2](https://www.cs.rochester.edu/u/gildea/2018_Fall/hrg.pdf)
 
@@ -419,6 +420,8 @@ Parse the input.. stitch the tree.. If not validated.. alternate action (new tre
     reflexive closure of =⇒, as usual.
 
 ### Graph Rewriting
+---
+
     https://en.wikipedia.org/wiki/Graph_rewriting
 
 Open source implementations:
@@ -469,5 +472,12 @@ Decided to go with GGL for now.. let's see if it builds.
 
 ..in the mean time, going back to utilizing tree-sitter.
 
-## Tree-sitter Work ..for the rest of the day.
+**Tree-sitter work ..for the rest of the day.**
+---
 
+## 25.11.13
+
+Had a thought while looking at tradingview.
+- I should just do the model first, not implement the whole thing ad hoc.
+- I would take all context-free languages, chop them up into components, Use a context-sensitive graph grammar as output of stitching it all back together.
+- Holisticization baby!

@@ -1,0 +1,43 @@
+# Pixi Configuration Files
+# Root pixi.toml (workspace-level):
+# Defines shared settings in [workspace] (e.g., channels, platforms). Uses [package.run-dependencies] for sub-package paths (e.g., subpkg = { path = "./subpkg" }). Manages overall metadata, environments, and features.
+# Sub-package pixi.toml (package-level):
+# Lightweight; includes [project] for package metadata (name, version, description), [dependencies] (Conda/PyPI), [tasks], and [package] for buildable details (build/host/run deps). Inherits workspace settings; no repeated config.
+# Root Control of Sub-Workspaces
+# Yes; root resolves dependencies across all, executes tasks/builds (via pixi run/pixi-build), and ensures shared environments. Sub-packages focus on specifics.
+
+[workspace]
+name = "cbp"
+authors = ["Peter Alexander <makeroftools@creativedevelopment.systems>"]
+channels = ["https://prefix.dev/pixi-build-backends", "https://conda.modular.com/max-nightly", "conda-forge"]
+platforms = ["linux-64"]
+<<<<<<< HEAD
+name = "cbp"
+preview = ["pixi-build"]
+
+[dependencies]
+python = ">=3.14.0,<3.15"
+typer = ">=0.20.0,<0.21"
+copier = ">=9.10.3,<10"
+mkdocs = ">=1.6.1,<2"
+cbp-accounting = { path = "./src/cbp-accounting" }
+
+[pypi-dependencies]
+tree-sitter = ">=0.25.2, <0.26"
+tree-sitter-python = ">=0.25.0, <0.26"
+
+[tasks]
+tree-sitter = "python src/cbp/tree_sitter/app.py"
+
+[editable]
+=======
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+python = ">=3.14.0,<3.15"
+
+[pypi-dependencies] 
+cbp = { editable = true }
+>>>>>>> 62437f4e60d42409cf30e1cdbcffc05a25701c86
