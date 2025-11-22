@@ -30,6 +30,8 @@ async fn main() {
     
     let schema = Schema::build(BinanceQuery::default(), EmptyMutation, EmptySubscription)
         .data(mut_client.clone())
+        .limit_depth(5)
+        .limit_complexity(5)
         .finish();
     
 let app = Route::new().at("/", get(graphiql).post(GraphQL::new(schema)));

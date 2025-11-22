@@ -173,3 +173,4 @@ private/*
 
 /target
 *.conda
+docs/notes/*
