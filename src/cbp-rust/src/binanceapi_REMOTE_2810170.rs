@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 use async_graphql::*;
 use binance_sdk::spot::rest_api::RestApi;
 use binance_sdk::spot::rest_api::ExchangeInfoParams;
@@ -71,4 +69,3 @@ impl BinanceQuery {
 //             })
 //     }
 // }
->>>>>>> origin/main

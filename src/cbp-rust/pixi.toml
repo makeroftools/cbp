@@ -18,3 +18,4 @@ lint = { cmd = "cargo clippy", depends-on = ["fmt"] }
 [dependencies]
 rust = ">=1.91.1,<1.92"
 rust-src = ">=1.91.1,<2"
+openssl = ">=3.6.0,<4"

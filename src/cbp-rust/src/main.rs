@@ -1,3 +1,5 @@
+use std::sync::Arc;
+
 use async_graphql::{EmptyMutation, EmptySubscription, Schema, http::GraphiQLSource};
 use async_graphql_poem::GraphQL;
 use poem::{IntoResponse, Route, Server, get, handler, listener::TcpListener, web::Html};
@@ -7,6 +9,7 @@ use binanceapi::BinanceQuery;
 use binance_sdk::config::ConfigurationRestApi;
 // use binance_sdk::config::ConfigurationWebsocketApi;
 use binance_sdk::spot;
+use tokio::sync::Mutex;
 
 
 #[handler]
@@ -17,14 +20,18 @@ async fn graphiql() -> impl IntoResponse {
 #[tokio::main]
 async fn main() {
     let rest_config = ConfigurationRestApi::builder().build().unwrap();
+    // let rest_client = spot::SpotRestApi::production(rest_config);
     let rest_client = spot::SpotRestApi::production(rest_config);
+    let mut_client = Arc::new(Mutex::new(rest_client));
     
     // let ws_config = ConfigurationWebsocketApi::builder().build();
     // let ws_client = spot::SpotWsApi::production(ws_config);
     // let ws_connection = ws_client.connect().await?;
     
-    let schema = Schema::build(BinanceQuery, EmptyMutation, EmptySubscription)
-        .data(rest_client)
+    let schema = Schema::build(BinanceQuery::default(), EmptyMutation, EmptySubscription)
+        .data(mut_client.clone())
+        .limit_depth(5)
+        .limit_complexity(5)
         .finish();
     
 let app = Route::new().at("/", get(graphiql).post(GraphQL::new(schema)));
