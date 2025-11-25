@@ -2,14 +2,12 @@ use async_graphql;
 use async_graphql::*;
 use binance_sdk::spot::rest_api::RestApi;
 use binance_sdk::spot::rest_api::ExchangeInfoParams;
-use binance_sdk::spot::rest_api::ExchangeInfoResponse;
+// use binance_sdk::spot::rest_api::ExchangeInfoResponse;
 use std::sync::Arc;
 // use serde_json;
 use tokio::sync::Mutex;
- 
-#[derive(SimpleObject)]
-#[graphql(name = "ExchangeInfoResponse")]
-struct ExchangeInfo(ExchangeInfoResponse);
+  
+
 pub struct BinanceQuery;    
 
 #[Object]
@@ -41,7 +39,14 @@ impl BinanceQuery {
             .await?
             .data()
             .await?;
-        Ok(ExchangeInfo)
+        let ret = ExchangeInfo {
+            exchange_filters: data.exchange_filters,
+            rate_limits: data.rate_limits,
+            server_time: data.server_time.unwrap(),
+            symbols: data.symbols,
+            timezone: data.timezone,
+        };
+        Ok(ret)
     }
 }
 
