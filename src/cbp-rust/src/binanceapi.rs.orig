@@ -1,55 +1,95 @@
-use binance_sdk::spot::{
-    rest_api::TickerParams,
 <<<<<<< HEAD
-};
 
 =======
-    SpotRestApi,
-};
-use binance_sdk::
+use async_graphql;
 >>>>>>> origin/main
-use async_graphql::{
-    Context,
-    Object
-};
-
+use async_graphql::*;
+use binance_sdk::spot::rest_api::RestApi;
+use binance_sdk::spot::rest_api::ExchangeInfoParams;
+use binance_sdk::spot::rest_api::ExchangeInfoResponse;
+use std::sync::Arc;
+// use serde_json;
+use tokio::sync::Mutex;
+ 
 <<<<<<< HEAD
-
-pub struct QueryRoot;
-
-#[Object]
-impl QueryRoot {
-    async fn (
-        &self, 
-        ctx: &Context,
-        #[graphql(desc = "This arg is optional.")]
-        arg: Option<Arg>,
-    ) -> Ticker {
-        let params = TickerParams::default();
-        let response = rest_client
-            .ticker(params)
-            .await
-            .context("ticker request failed");
-        let data = response.data().await?;
-        return data
-=======
-pub struct Ticker;
-pub struct Params;
 
 #[derive(Default)]
+pub struct BinanceQuery;    
+=======
+#[derive(SimpleObject)]
+#[graphql(name = "ExchangeInfoResponse")]
+struct ExchangeInfo(ExchangeInfoResponse);
+
 pub struct BinanceQuery;
+>>>>>>> origin/main
 
 #[Object]
 impl BinanceQuery {
-    async fn time(
-        &self, 
-        ctx: &Context<'_>
-    ) -> async_graphql::Result<String> {
-        let client = ctx.data::<SpotRestApi>()?;
-        let params = TickerParams::default();
-        let response = client.time().await.context("time request failed");
-        Ok(response)
+    async fn time(&self, ctx: &Context<'_>) -> async_graphql::Result<String> {
+        let client = ctx.data::<Arc<Mutex<RestApi>>>()?.clone();
+        // let resp = (&*client.lock().await).time().await?;
+        // let resp = (&client.lock().await).time().await?;
+        let resp = client.lock().await.time().await?;
+        let data = resp.data().await?;
+        let stime = data.server_time.to_string();
+        Ok(stime)
+    }
+    
+    async fn ping(&self, ctx: &Context<'_>) -> async_graphql::Result<String> {
+        let client = ctx.data::<Arc<Mutex<RestApi>>>()?.clone();
+        // let resp = (&client.lock().await).ping().await?;
+        // let resp = client.lock().await.ping().await?;
+        let resp = client.lock().await.ping().await?;
+        let data = resp.data().await?;
+        let ack = data.to_string();
+        Ok(ack)
+    }
+
+<<<<<<< HEAD
+    async fn exchange_info(&self, ctx: &Context<'_>) -> async_graphql::Result<ExchangeInfoResponse> {
+        let client = ctx.data::<Arc<Mutex<RestApi>>>()?.clone();
+        let resp = (&client.lock().await).exchange_info(ExchangeInfoParams::default()).await?;
+        let data = resp.data().await?;
+        Ok(data)
+=======
+    async fn exchange_info(&self, ctx: &Context<'_>) -> async_graphql::Result<ExchangeInfo> {
+        let client = ctx.data::<Arc<Mutex<RestApi>>>()?.clone();
+        let data = client.lock().await
+            .exchange_info(ExchangeInfoParams::default())
+            .await?
+            .data()
+            .await?;
+        Ok(ExchangeInfo)
 >>>>>>> origin/main
     }
 }
+
+
+// struct Mutation;
+
+// #[Object]
+// impl Mutation {
+//     async fn signup(&self, username: String, password: String) -> Result<bool> {
+//         // User signup
+//     }
+
+//     async fn login(&self, username: String, password: String) -> Result<String> {
+//         // User login (generate token)
+//     }
+// }
+
+
+// struct Subscription;
+
+// #[Subscription]
+// impl Subscription {
+//     async fn integers(&self, #[graphql(default = 1)] step: i32) -> impl Stream<Item = i32> {
+//         let mut value = 0;
+//         tokio_stream::wrappers::IntervalStream::new(tokio::time::interval(Duration::from_secs(1)))
+//             .map(move |_| {
+//                 value += step;
+//                 value
+//             })
+//     }
+// }
 
