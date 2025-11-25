@@ -1,16 +1,15 @@
-<<<<<<< HEAD
-=======
+
 use async_graphql::*;
 use binance_sdk::spot::rest_api::RestApi;
 use binance_sdk::spot::rest_api::ExchangeInfoParams;
-use binance_sdk::spot::rest_api::ExchangeInfoResponse
+use binance_sdk::spot::rest_api::ExchangeInfoResponse;
 use std::sync::Arc;
 // use serde_json;
 use tokio::sync::Mutex;
  
 
-
-pub struct BinanceQuery;
+#[derive(Default)]
+pub struct BinanceQuery;    
 
 #[Object]
 impl BinanceQuery {
@@ -20,7 +19,7 @@ impl BinanceQuery {
         // let resp = (&client.lock().await).time().await?;
         let resp = client.lock().await.time().await?;
         let data = resp.data().await?;
-        let stime = data.server_time.unwrap().to_string();
+        let stime = data.server_time.to_string();
         Ok(stime)
     }
     
@@ -34,12 +33,11 @@ impl BinanceQuery {
         Ok(ack)
     }
 
-    async fn exchange_info(&self, ctx: &Context<'_>) -> async_graphql::Result<&ExchangeInfoResponse> {
+    async fn exchange_info(&self, ctx: &Context<'_>) -> async_graphql::Result<ExchangeInfoResponse> {
         let client = ctx.data::<Arc<Mutex<RestApi>>>()?.clone();
         let resp = (&client.lock().await).exchange_info(ExchangeInfoParams::default()).await?;
         let data = resp.data().await?;
-        // Ok(serde_json::to_string_pretty(&data)?)
-        Ok(&data)
+        Ok(data)
     }
 }
 
@@ -71,4 +69,4 @@ impl BinanceQuery {
 //             })
 //     }
 // }
->>>>>>> origin/main
+
