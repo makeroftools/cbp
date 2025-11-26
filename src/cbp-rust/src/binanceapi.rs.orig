@@ -1,14 +1,27 @@
+<<<<<<< HEAD
+
+=======
 use async_graphql;
+>>>>>>> origin/main
 use async_graphql::*;
 use binance_sdk::spot::rest_api::RestApi;
 use binance_sdk::spot::rest_api::ExchangeInfoParams;
-// use binance_sdk::spot::rest_api::ExchangeInfoResponse;
+use binance_sdk::spot::rest_api::ExchangeInfoResponse;
 use std::sync::Arc;
 // use serde_json;
 use tokio::sync::Mutex;
-  
+ 
+<<<<<<< HEAD
 
+#[derive(Default)]
 pub struct BinanceQuery;    
+=======
+#[derive(SimpleObject)]
+#[graphql(name = "ExchangeInfoResponse")]
+struct ExchangeInfo(ExchangeInfoResponse);
+
+pub struct BinanceQuery;
+>>>>>>> origin/main
 
 #[Object]
 impl BinanceQuery {
@@ -32,6 +45,13 @@ impl BinanceQuery {
         Ok(ack)
     }
 
+<<<<<<< HEAD
+    async fn exchange_info(&self, ctx: &Context<'_>) -> async_graphql::Result<ExchangeInfoResponse> {
+        let client = ctx.data::<Arc<Mutex<RestApi>>>()?.clone();
+        let resp = (&client.lock().await).exchange_info(ExchangeInfoParams::default()).await?;
+        let data = resp.data().await?;
+        Ok(data)
+=======
     async fn exchange_info(&self, ctx: &Context<'_>) -> async_graphql::Result<ExchangeInfo> {
         let client = ctx.data::<Arc<Mutex<RestApi>>>()?.clone();
         let data = client.lock().await
@@ -39,14 +59,8 @@ impl BinanceQuery {
             .await?
             .data()
             .await?;
-        let ret = ExchangeInfo {
-            exchange_filters: data.exchange_filters,
-            rate_limits: data.rate_limits,
-            server_time: data.server_time.unwrap(),
-            symbols: data.symbols,
-            timezone: data.timezone,
-        };
-        Ok(ret)
+        Ok(ExchangeInfo)
+>>>>>>> origin/main
     }
 }
 

@@ -6,9 +6,18 @@ use binance_sdk::spot::rest_api::ExchangeInfoParams;
 use std::sync::Arc;
 // use serde_json;
 use tokio::sync::Mutex;
+<<<<<<< HEAD:src/cbp-rust/src/binanceapi.rs
+ 
+#[derive(SimpleObject)]
+#[graphql(name = "ExchangeInfoResponse")]
+struct ExchangeInfo(ExchangeInfoResponse);
+pub struct BinanceQuery;    
+=======
   
 
-pub struct BinanceQuery;    
+
+pub struct BinanceQuery;
+>>>>>>> origin/main:src/cbp-rust/src/binance/binanceapi.rs
 
 #[Object]
 impl BinanceQuery {
