@@ -20,6 +20,7 @@ backend = { name = "pixi-build", version = "*"}
 
 [dependencies]
 typer = ">=0.20.0,<0.21"
+requests = ">=2.32.5,<3"
 
 [package.host-dependencies]
 # host-dependencies#
