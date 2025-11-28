@@ -15,25 +15,25 @@ impl Query {
 
     async fn server_time(&self, ctx: &Context<'_>) -> FieldResult<i64> {
         let client = ctx.data_unchecked::<Arc<BinanceClient>>();
-        let resp = client.spot.server_time().await?;
+        let resp = client.spot.get_server_time().await?;
         Ok(resp.serverTime)
     }
 
     async fn exchange_info(&self, ctx: &Context<'_>) -> FieldResult<String> {
         let client = ctx.data_unchecked::<Arc<BinanceClient>>();
-        let info: () = client.spot.exchange_info().await?;
+        let info: () = client.spot.exchange_info(Default::default()).await?;
         Ok("Exchange info stub".to_string())
     }
 
     async fn ticker_24hr(&self, ctx: &Context<'_>, symbol: String) -> FieldResult<serde_json::Value> {
         let client = ctx.data_unchecked::<Arc<BinanceClient>>();
-        let ticker: () = client.spot.ticker_24hr(&symbol).await?;
+        let ticker: () = client.spot.ticker24hr(&symbol).await?;
         Ok(serde_json::json!({ "symbol": symbol, "price": "stub" }))
     }
 
     async fn account(&self, ctx: &Context<'_>) -> FieldResult<serde_json::Value> {
         let client = ctx.data_unchecked::<Arc<BinanceClient>>();
-        let account: () = client.spot.account().await?;
+        let account: () = client.spot.get_account().await?;
         Ok(serde_json::json!({ "balances": [] }))
     }
 
@@ -44,9 +44,9 @@ impl Query {
     ) -> FieldResult<Vec<serde_json::Value>> {
         let client = ctx.data_unchecked::<Arc<BinanceClient>>();
         let orders: () = if let Some(sym) = symbol {
-            client.spot.open_orders(Some(&sym)).await?
+            client.spot.get_open_orders(Some(&sym)).await?
         } else {
-            client.spot.open_orders(None::<&str>).await?
+            client.spot.get_open_orders(None::<&str>).await?
         };
         Ok(vec![])
     }

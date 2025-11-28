@@ -48,7 +48,7 @@ python = ">=3.14.0,<3.15"
 # Extra data file packages
 # Python/R packages that are not needed during build time
 cbp-rust = { path = "src/cbp-rust" }
-cbp-accounting = { path = "src/cbp-accounting" }
+# cbp-accounting = { path = "src/cbp-accounting" }
 rich = ">=14.2.0,<15"
 
 [tasks]
