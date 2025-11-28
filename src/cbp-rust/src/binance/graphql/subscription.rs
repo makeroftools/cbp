@@ -15,11 +15,12 @@ pub struct BinanceWsClient {
 
 #[derive(Clone, Debug)]
 pub enum WsMessage {
-    Trade { symbol: String, price: String, qty: String, time: i64 },
-    BookTicker { symbol: String, best_bid: String, best_ask: String },
-    Kline { symbol: String, interval: String, open: String, close: String, high: String, low: String, time: i64 },
-    UserDataBalance { asset: String, free: String, locked: String },
-    UserDataOrder { symbol: String, order_id: i64, status: String, executed_qty: String },
+    Trade {
+        symbol: String,
+        price: String,
+        qty: String,
+        time: i64,
+    },
 }
 
 impl BinanceWsClient {
@@ -28,68 +29,71 @@ impl BinanceWsClient {
         let client = Arc::new(Self { tx });
         let client_clone = client.clone();
         tokio::spawn(async move {
-            client_clone.start_combined_streams().await;
+            client_clone.run().await;
         });
         client
     }
 
-    async fn start_combined_streams(self: Arc<Self>) {
-        let symbols = vec!["btcusdt", "ethusdt", "bnbusdt"];
+    async fn run(self: Arc<Self>) {
+        let symbols = ["btcusdt", "ethusdt", "bnbusdt"];
         let streams: Vec<String> = symbols.iter().map(|s| format!("{}@trade", s)).collect();
         let url = format!("wss://stream.binance.com:9443/stream?streams={}", streams.join("/"));
 
         loop {
             match connect_async(&url).await {
-                Ok((ws_stream, _)) => {
-                    let (mut write, mut read) = ws_stream.split();
-                    while let Some(msg) = read.next().await {
-                        if let Ok(Message::Text(text)) = msg {
-                            if let Ok(event) = serde_json::from_str::<serde_json::Value>(&text) {
-                                if let Some(data) = event["data"].as_object() {
-                                    if let (Some("trade"), Some(symbol)) = (data["e"].as_str(), data["s"].as_str()) {
-                                        let _ = self.tx.send(WsMessage::Trade {
-                                            symbol: symbol.to_uppercase(),
-                                            price: data["p"].as_str().unwrap_or("0").to_string(),
-                                            qty: data["q"].as_str().unwrap_or("0").to_string(),
-                                            time: data["T"].as_i64().unwrap_or(0),
-                                        });
+                Ok((ws, _)) => {
+                    let (_, mut read) = ws.split();
+                    while let Some(Ok(msg)) = read.next().await {
+                        if let Message::Text(text) = msg {
+                            if let Ok(json) = serde_json::from_str::<serde_json::Value>(&text) {
+                                if let Some(data) = json["data"].as_object() {
+                                    if data["e"].as_str() == Some("trade") {
+                                        if let Some(s) = data["s"].as_str() {
+                                            let _ = self.tx.send(WsMessage::Trade {
+                                                symbol: s.to_uppercase(),
+                                                price: data["p"].as_str().unwrap_or("").into(),
+                                                qty: data["q"].as_str().unwrap_or("").into(),
+                                                time: data["T"].as_i64().unwrap_or(0),
+                                            });
+                                        }
                                     }
                                 }
                             }
-                        } else {
-                            break;
                         }
                     }
                 }
                 Err(e) => {
-                    eprintln!("WebSocket error: {e}, reconnecting in 5s...");
+                    eprintln!("WS error: {e}, reconnecting...");
                     tokio::time::sleep(tokio::time::Duration::from_secs(5)).await;
                 }
             }
         }
     }
 
-    pub fn subscribe_trades(&self) -> impl Stream<Item = WsMessage> {
-        BroadcastStream::new(self.tx.subscribe()).filter_map(|res| async move {
-            match res {
-                Ok(WsMessage::Trade { .. }) => res.ok(),
-                _ => None,
-            }
-        })
+    pub fn subscribe(&self) -> impl Stream<Item = WsMessage> {
+        BroadcastStream::new(self.tx.subscribe())
+            .filter_map(|r| async move { r.ok() })
     }
 }
 
 #[Subscription]
 impl Subscription {
     async fn trades(&self, ctx: &Context<'_>, symbol: String) -> impl Stream<Item = Result<Trade>> {
-        let client = ctx.data_unchecked::<Arc<BinanceWsClient>>();
-        client.subscribe_trades().filter_map(move |msg| async move {
-            if let WsMessage::Trade { symbol: s, price, qty, time } = msg {
-                if s == symbol.to_uppercase() {
-                    return Some(Ok(Trade { symbol: s, price, qty, time }));
+        let ws = ctx.data_unchecked::<Arc<BinanceWsClient>>();
+        let target = symbol.to_uppercase();
+        ws.subscribe().filter_map(move |msg| {
+            let target = target.clone();
+            async move {
+                match msg {
+                    WsMessage::Trade { symbol: s, price, qty, time } => {
+                        if s == target {
+                            Some(Ok(Trade { symbol: s, price, qty, time }))
+                        } else {
+                            None
+                        }
+                    }
                 }
             }
-            None
         })
     }
 }
