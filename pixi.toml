@@ -21,6 +21,9 @@ backend = { name = "pixi-build", version = "*"}
 [dependencies]
 typer = ">=0.20.0,<0.21"
 requests = ">=2.32.5,<3"
+pydantic = ">=2.12.5,<3"
+httpx = ">=0.28.1,<0.29"
+nodejs = ">=24.9.0,<24.10"
 
 [package.host-dependencies]
 # host-dependencies#
@@ -51,7 +54,13 @@ cbp-rust = { path = "src/cbp-rust" }
 # cbp-accounting = { path = "src/cbp-accounting" }
 rich = ">=14.2.0,<15"
 
+
+[pypi-dependencies]
+tree-sitter = ">=0.25.2, <0.26"
+tree-sitter-rust = ">=0.24.0, <0.25"
+npm = ">=0.1.1, <0.2"
+
+
 [tasks]
 start = "PYTHONPATH=./src python src/cbp/app.py"
-
-
+npm-install = "npm install"
