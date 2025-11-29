@@ -1,66 +1,67 @@
 [workspace]
 name = "cbp"
-version = "0.1.0"
-authors = ["Peter Alexander <makeroftools@creativedevelopment.systems>"]
+# version = "0.1.0"
+# authors = ["Peter Alexander <makeroftools@creativedevelopment.systems>"]
 channels = ["https://conda.modular.com/max-nightly", "conda-forge"]
 platforms = ["linux-64"]
-preview = ["pixi-build"]
+# preview = ["pixi-build"]
 
-[package]
-name = "cbp"
-version = "0.1.0"
-authors = ["Peter Alexander <makeroftools@creativedevelopment.systems>"]
-description = "A package for building and managing projects"
-license = "MPL-2.0"
-readme = "README.md"
-repository = "https://github.com/makeroftools/cbp"
+# [package]
+# name = "cbp"
+# version = "0.1.0"
+# authors = ["Peter Alexander <makeroftools@creativedevelopment.systems>"]
+# description = "A package for building and managing projects"
+# license = "MPL-2.0"
+# readme = "README.md"
+# repository = "https://github.com/makeroftools/cbp"
 
-[package.build]
-backend = { name = "pixi-build", version = "*"}
+# [package.build]
+# backend = { name = "pixi-build", version = "*"}
 
 [dependencies]
-typer = ">=0.20.0,<0.21"
-requests = ">=2.32.5,<3"
-pydantic = ">=2.12.5,<3"
-httpx = ">=0.28.1,<0.29"
+# typer = ">=0.20.0,<0.21"
+# requests = ">=2.32.5,<3"
+# pydantic = ">=2.12.5,<3"
+# httpx = ">=0.28.1,<0.29"
 nodejs = ">=24.9.0,<24.10"
-
-[package.host-dependencies]
-# host-dependencies#
-# Host dependencies are required during build phase, but in contrast to build packages they have to be present on the host.
-# Following packages are typical examples for host dependencies:
-# shared libraries (c/c++)
-# python/r libraries that link against c libraries
-# python, r-base
-# setuptools, pip
 python = ">=3.14.0,<3.15"
 
-[package.build-dependencies]
-# Build dependencies are required in the build environment and contain all tools that are not needed on the host of the package.
-# Following packages are examples of typical build dependencies:
-# compilers (gcc, clang, gfortran)
-# build tools (cmake, ninja, meson)
-# make
-# pkg-config
-# VSC packages (git, svn)
+# [package.host-dependencies]
+# # host-dependencies#
+# # Host dependencies are required during build phase, but in contrast to build packages they have to be present on the host.
+# # Following packages are typical examples for host dependencies:
+# # shared libraries (c/c++)
+# # python/r libraries that link against c libraries
+# # python, r-base
+# # setuptools, pip
+# python = ">=3.14.0,<3.15"
 
-[package.run-dependencies]
-# run-dependencies#
-# The run-dependencies are the packages that will be installed in the environment when the package is run.
-# Libraries
-# Extra data file packages
-# Python/R packages that are not needed during build time
-cbp-rust = { path = "src/cbp-rust" }
-# cbp-accounting = { path = "src/cbp-accounting" }
-rich = ">=14.2.0,<15"
+# [package.build-dependencies]
+# # Build dependencies are required in the build environment and contain all tools that are not needed on the host of the package.
+# # Following packages are examples of typical build dependencies:
+# # compilers (gcc, clang, gfortran)
+# # build tools (cmake, ninja, meson)
+# # make
+# # pkg-config
+# # VSC packages (git, svn)
+
+# [package.run-dependencies]
+# # run-dependencies#
+# # The run-dependencies are the packages that will be installed in the environment when the package is run.
+# # Libraries
+# # Extra data file packages
+# # Python/R packages that are not needed during build time
+# cbp-rust = { path = "src/cbp-rust" }
+# # cbp-accounting = { path = "src/cbp-accounting" }
+# rich = ">=14.2.0,<15"
 
 
 [pypi-dependencies]
-tree-sitter = ">=0.25.2, <0.26"
-tree-sitter-rust = ">=0.24.0, <0.25"
+# tree-sitter = ">=0.25.2, <0.26"
+# tree-sitter-rust = ">=0.24.0, <0.25"
 npm = ">=0.1.1, <0.2"
 
 
 [tasks]
-start = "PYTHONPATH=./src python src/cbp/app.py"
+# start = "PYTHONPATH=./src python src/cbp/app.py"
 npm-install = "npm install"

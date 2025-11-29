@@ -1,0 +1,16 @@
+[project]
+name = "cbp-python"
+channels = ["conda-forge"]
+platforms = ["linux-64", "osx-64", "osx-arm64", "win-64"]
+
+[dependencies]
+python = "3.12"
+pip = "*"
+
+[pypi-dependencies]
+# Add real PyPI deps here later, e.g.
+# requests = "*"
+# pandas = "*"
+
+[tasks]
+test = "pytest -v"

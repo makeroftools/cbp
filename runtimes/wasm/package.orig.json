@@ -1,0 +1,13 @@
+{
+  "name": "@cbp/wasm",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "cbp_wasm_bg.wasm",
+    "cbp_wasm.js",
+    "cbp_wasm.d.ts"
+  ]
+}

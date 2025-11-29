@@ -1,0 +1,12 @@
+[project]
+name = "cbp-wasm"
+channels = ["conda-forge"]
+
+[dependencies]
+rust = ">=1.82"
+wasm-pack = "*"
+
+[tasks]
+build = "wasm-pack build --target web --out-dir pkg"
+build-node = "wasm-pack build --target nodejs --out-dir pkg-node"
+test = "cargo test"

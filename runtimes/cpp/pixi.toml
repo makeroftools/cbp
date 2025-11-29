@@ -1,0 +1,14 @@
+[project]
+name = "cbp-cpp"
+channels = ["conda-forge"]
+
+[dependencies]
+# Core C++ toolchain
+gcc_linux-64 = ">=12"
+gxx_linux-64 = ">=12"
+clang_osx-64 = ">=16"
+clang_osx-arm64 = ">=16"
+libclang = "*"
+cmake = ">=3.28"
+ninja = "*"
+make = "*"

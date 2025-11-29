@@ -1,0 +1,9 @@
+{
+  "name": "cbp",
+  "private": true,
+  "workspaces": [
+    "runtimes/nodejs",
+    "runtimes/web",
+    "runtimes/wasm"
+  ]
+}
