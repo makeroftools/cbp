@@ -1,0 +1,12 @@
+[package]
+name = "cbp-binance"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+tokio.workspace = true
+serde.workspace = true
+anyhow.workspace = true
+async-graphql = "7.0.17"
+async-graphql-poem = "7.0.17"
+binance-sdk = "33.0.0"

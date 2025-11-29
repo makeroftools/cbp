@@ -1,19 +1,14 @@
-[package]
-name = "cbp-rust"
+[workspace]
+members = [ "crates/*" ]
+resolver = "2"
+
+[workspace.package]
 version = "0.1.0"
 edition = "2021"
+license = "MPLv2"
+rust-version = "1.82"
 
-[[bin]]
-name = "cbp-rust"
-path = "src/binance/main.rs"
-
-[dependencies]
-async-graphql = "7.0.17"
-async-graphql-poem = "7.0.17"
-poem = "3.1.12"
-tokio = { version = "1.48.0", features = ["rt-multi-thread", "macros"] }
-binance-sdk = { version = "32.0.0", features = ["spot"] }
-tokio-tungstenite = { version = "0.28.0", features = ["native-tls"] }
-tokio-stream = { version = "0.1.17", features = ["sync"] }
-futures-util = "0.3.31"
-serde_json = "1.0.145"
+[workspace.dependencies]
+anyhow = "1.0.100"
+serde = "1.0.228"
+tokio = "1.48.0"
