@@ -174,3 +174,4 @@ private/*
 /target
 *.conda
 docs/notes/*
+.build-output
