@@ -175,3 +175,4 @@ private/*
 *.conda
 docs/notes/*
 .build-output
+node_modules

@@ -65,3 +65,10 @@ npm = ">=0.1.1, <0.2"
 [tasks]
 # start = "PYTHONPATH=./src python src/cbp/app.py"
 npm-install = "npm install"
+update-all = """
+pixi update && \
+  (cd runtimes/rust    && pixi update) && \
+  (cd runtimes/python  && pixi update) && \
+  (cd runtimes/cpp     && pixi update) && \
+  (cd runtimes/wasm    && pixi update)
+"""
