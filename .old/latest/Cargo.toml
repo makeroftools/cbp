@@ -2,16 +2,12 @@
 name = "cbp-binance"
 version.workspace = true
 edition.workspace = true
-license.workspace = true
-rust-version.workspace = true
 
 [dependencies]
+tokio.workspace = true
+serde.workspace = true
+anyhow.workspace = true
 async-graphql = "7.0.17"
 async-graphql-poem = "7.0.17"
 binance-sdk = { version = "1.0.0", features = ["spot"] }
-poem = "3.1.12"
-tokio = { workspace = true, features = ["full"] }
-
-
-# [target.x86_64-unknown-linux-gnu.cbp-binance]
-# linker = "rust-lld"
+git2 = "0.20.2"
