@@ -1,7 +1,0 @@
-[package]
-name = "cbp-binance"
-version.workspace = true
-edition.workspace = true
-
-[dependencies]
-
