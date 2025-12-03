@@ -10,9 +10,11 @@ platforms = ["linux-64"]
 rust = ">=1.91.1,<1.92"
 rust-src = ">=1.91.1,<2"
 openssl = ">=3.6.0,<4"
+clang = ">=21.1.6,<22"
+clang-tools = ">=21.1.6,<22"
 
 [tasks]
-build = "cargo build --release --workspace |& tee build.log"
+
 start = "cargo run"
 test = "cargo test --workspace"
 clean = "cargo clean"
@@ -22,4 +24,11 @@ lint = { cmd = "cargo clippy --workspace -- -D warnings", depends-on = ["fmt"] }
 [tasks.add]
 args = [{"arg" = "rust_package"},{ "arg" = "features", default = ""}]
 cmd = "cargo add {arg} {features}||cargo add {arg} {features} --pypi"
+
+[tasks.build]
+cmd = "cargo build --release --workspace |& tee build.log"
+env = {CC = "clang", CXX = "clang++", CARGO_TARGET_X86_64_CONDA_LINUX_GNU_LINKER = "clang", CFLAGS = "-fuse-ld=lld", CXXFLAGS = "-fuse-ld=lld"}
+
+
+
 
