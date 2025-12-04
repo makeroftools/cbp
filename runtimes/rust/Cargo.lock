@@ -264,6 +264,7 @@ dependencies = [
  "async-graphql-poem",
  "binance-sdk",
  "poem",
+ "slab",
  "tokio",
 ]
 

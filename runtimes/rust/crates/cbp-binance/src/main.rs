@@ -5,15 +5,11 @@ use async_graphql_poem::*;
 // use binance_sdk::spot::websocket_api::order_cancel_replace_response_result_cancel_response;
 use poem::{listener::TcpListener, web::Html, *};
 
-use binance_sdk::config::ConfigurationRestApi;
 
-use binance_sdk::spot::SpotRestApi;
-
-
-struct BinanceQuery;
+struct Query;
 
 #[Object]
-impl BinanceQuery {
+impl Query {
     async fn time<'ctx>(&self, ctx: &Context<'ctx>) -> i64 {
         let response = ctx.data::<SpotRestApi>.time().await.context("time request failed")?;
         let time = response.server_time;
@@ -41,7 +37,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
 
     // create the schema
-    let schema = Schema::build(BinanceQuery, EmptyMutation, EmptySubscription).data(client).finish();
+    let schema = Schema::build(Query, EmptyMutation, EmptySubscription).data(client).finish();
 
     // start the http server
     let app = Route::new().at("/", get(graphiql).post(GraphQL::new(schema)));
