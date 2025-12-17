@@ -1,0 +1,20 @@
+[package]
+name = "cbp-gateway"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+async-graphql = "7.0.17"
+async-graphql-poem = "7.0.17"
+poem = "3.1.12"
+
+anyhow = { workspace = true }
+serde = { workspace = true }
+tokio = { workspace = true, features = ["full"] }
+slab = "0.4.11"
+
+# async-graphql-examples = { path = "../../examples/async-graphql"}
+# dynamic-books = { path = "../../examples/async-graphql/poem/dynamic-books"}
+

@@ -176,3 +176,4 @@ private/*
 docs/notes/*
 .build-output
 node_modules
+src/accounting/*
