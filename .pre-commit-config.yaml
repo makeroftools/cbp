@@ -1,0 +1,5 @@
+repos:
+  - repo: https://github.com/jeremyephron/pre-commit-git-submodule
+    rev: v1.0.0
+    hooks:
+      - id: submodule-status

@@ -1,5 +1,6 @@
 {
-  "name": "@cbp/nodejs",
-  "version": "0.0.1",
-  "private": true
+  "name": "cbp-nodejs",
+  "private": true,
+  "workspaces": ["", ""]  // Add your sub-project dirs
 }
+
