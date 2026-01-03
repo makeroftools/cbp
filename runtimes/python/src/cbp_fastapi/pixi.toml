@@ -1,21 +1,19 @@
-[package]
-name = "cbp-fastapi"
+[project]
+name = "cbp_fastapi"  # Optional, for clarity
 version = "0.1.0"
-authors = ["Peter Alexander <makeroftools@creativedevelopment.systems>"]
-description = "CBP FastAPI Package"
-documentation = ""
-homepage = "https://creativedevelopment.systems"
-license = "MPLv2"
-license-file = "LICENSE"
-readme = "README.md"
-repository = "https://github.com/makeroftools/cbp"
+channels = ["conda-forge"]
+platforms = []
 
-[package.build]
-backend = { name = "pixi-build-python", version = "==0.4.0" }
+[dependencies]
+rich = "*"
 
-[package.host-dependencies]
-hatchling = "==1.26.3"
+[pypi-dependencies]
+fastapi = { version = "*", extras = ["standard"] }
+# some-conda-package = "*"
+# # Add more conda packages here, e.g.
+# numpy = "*"
+# scipy = "*"
 
-[package.run-dependencies]
-strawberry-graphql = { version = ">=0.288.1, <0.289", extras = ["fastapi", "cli"] }
-fastapi = { version = ">=0.128.0, <0.129", extras = ["standard"] }
+# # Optional: dev dependencies
+# [feature.dev.dependencies]
+# pytest = "*"
