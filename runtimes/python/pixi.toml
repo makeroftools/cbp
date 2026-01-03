@@ -2,21 +2,85 @@
 name = "cbp-python"
 channels = ["conda-forge"]
 platforms = ["linux-64"]
+preview = ["pixi-build"]
 
 [dependencies]
-python = ">=3.14.0,<3.15"
-pip = "*"
-ruff = ">=0.14.7,<0.15"
-pytest = ">=9.0.1,<10"
-typer = ">=0.20.0,<0.21"
-rich = ">=14.2.0,<15"
+python = ">=3.14.2,<3.15"
+pip = ">=25.3,<26"
+ruff = ">=0.14.10,<0.15"
+pytest = ">=9.0.2,<10"
+typer = ">=0.21.0,<0.22"
 pydantic = ">=2.12.5,<3"
+rich = ">=14.2.0,<15"
 
 [pypi-dependencies]
-rich = { version = "*", extras = ["all"] }
+# rich = { version = "*", extras = ["all"] }
+
+# hyperliquid = ">=0.4.66, <0.5"
 # Add real PyPI deps here later, e.g.
 # requests = "*"
 # pandas = "*"
 
 [tasks]
-test = "pytest -v"
+cbp-fastapi     = { cwd = "src/fastapi", cmd = "strawberry dev app" }
+# cbp-accounting  = { cmd = "python src/accounting/app.py" }
+# cbp-hyperlquid  = { cmd = "python src/hyperlquid/app.py" }
+
+test        = { cmd = "pytest -v" }
+
+
+# [tasks]
+# simple = "echo This is a simple task"
+# cmd = { cmd="echo Same as a simple task but now more verbose"}
+# depending = { cmd="echo run after simple", depends-on="simple"}
+# alias = { depends-on=["depending"]}
+# download = { cmd="curl -o file.txt https://example.com/file.txt" , outputs=["file.txt"]}
+# build = { cmd="npm build", cwd="frontend", inputs=["frontend/package.json", "frontend/*.js"]}
+# 
+# run = { cmd="python run.py $ARGUMENT", env={ ARGUMENT="value" }}
+# 
+# format = { cmd="black $INIT_CWD" } # runs black where you run pixi run format
+# clean-env = { cmd = "python isolated.py", clean-env = true} # Only on Unix!
+
+
+
+# # Task with required arguments
+# [tasks.greet]
+# args = ["name"]
+# cmd = "echo Hello, {{ name }}!"
+
+# # Task with optional arguments (default values)
+# [tasks.build]
+# args = [
+#   { "arg" = "project", "default" = "my-app" },
+#   { "arg" = "mode", "default" = "development" },
+# ]
+# cmd = "echo Building {{ project }} with {{ mode }} mode"
+
+# # Task with mixed required and optional arguments
+# [tasks.deploy]
+# args = ["service", { "arg" = "environment", "default" = "staging" }]
+# cmd = "echo Deploying {{ service }} to {{ environment }}"
+
+
+# Using Task Arguments#
+
+# When running a task, provide arguments in the order they are defined:
+
+# # Required argument
+# pixi run greet John
+# ✨ Pixi task (greet in default): echo Hello, John!
+
+# # Default values are used when omitted
+# pixi run build
+# ✨ Pixi task (build in default): echo Building my-app in development mode
+
+# # Override default values
+# pixi run build my-project production
+# ✨ Pixi task (build in default): echo Building my-project in production mode
+
+# # Mixed argument types
+# pixi run deploy auth-service
+# ✨ Pixi task (deploy in default): echo Deploying auth-service to staging
+# pixi run deploy auth-service production
+# ✨ Pixi task (deploy in default): echo Deploying auth-service to production

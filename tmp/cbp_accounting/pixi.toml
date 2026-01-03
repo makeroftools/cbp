@@ -1,0 +1,11 @@
+[package]
+name = "cbp-accounting"
+version = "0.1.0"
+authors = ["Peter Alexander <makeroftools@creativedevelopment.systems>"]
+description = "CBP Accounting Package"
+documentation = ""
+homepage = "https://creativedevelopment.systems"
+license = "MPLv2"
+license-file = "LICENSE"
+readme = "README.md"
+repository = "https://github.com/makeroftools/cbp"

@@ -1,0 +1,21 @@
+[package]
+name = "cbp-fastapi"
+version = "0.1.0"
+authors = ["Peter Alexander <makeroftools@creativedevelopment.systems>"]
+description = "CBP FastAPI Package"
+documentation = ""
+homepage = "https://creativedevelopment.systems"
+license = "MPLv2"
+license-file = "LICENSE"
+readme = "README.md"
+repository = "https://github.com/makeroftools/cbp"
+
+[package.build]
+backend = { name = "pixi-build-python", version = "==0.4.0" }
+
+[package.host-dependencies]
+hatchling = "==1.26.3"
+
+[package.run-dependencies]
+strawberry-graphql = { version = ">=0.288.1, <0.289", extras = ["fastapi", "cli"] }
+fastapi = { version = ">=0.128.0, <0.129", extras = ["standard"] }

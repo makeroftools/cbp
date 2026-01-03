@@ -1,0 +1,5 @@
+[project]
+dependencies = ["rich"]
+name = "cbp-python"
+requires-python = ">=3.11"
+scripts = { }
